@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Reservas - AntioqAPP</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fantioqapp6359back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-warm border-b border-subtle">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L3 7v10c0 8.5 5.5 16.5 13 18 7.5-1.5 13-9.5 13-18V7L16 2z"/>
+                        <circle cx="16" cy="14" r="4" fill="white"/>
+                        <path d="M12 20h8v2h-8z" fill="white"/>
+                    </svg>
+                    <span class="ml-2 text-xl font-serif font-bold text-primary">AntioqAPP</span>
+                </div>
+                
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="tourism_routes.html" class="text-text-secondary hover:text-primary transition-colors">Rutas</a>
+                    <a href="events_calendar.html" class="text-text-secondary hover:text-primary transition-colors">Eventos</a>
+                    <a href="business_directory.html" class="text-text-secondary hover:text-primary transition-colors">Negocios</a>
+                    <a href="booking_management.html" class="text-primary font-medium">Mis Reservas</a>
+                    <div class="relative">
+                        <button class="flex items-center text-text-secondary hover:text-primary transition-colors" onclick="toggleUserMenu()">
+                            <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Usuario" class="w-8 h-8 rounded-full mr-2" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <span>María González</span>
+                            <i class="fas fa-chevron-down ml-1 text-xs"></i>
+                        </button>
+                        <!-- User Dropdown -->
+                        <div id="userMenu" class="absolute right-0 mt-2 w-48 bg-surface rounded-lg shadow-warm-lg border border-subtle hidden z-50">
+                            <div class="py-2">
+                                <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-secondary hover:bg-primary-50 hover:text-primary">Mi Perfil</a>
+                                <a href="booking_management.html" class="block px-4 py-2 text-sm text-primary bg-primary-50">Mis Reservas</a>
+                                <a href="javascript:void(0)" class="block px-4 py-2 text-sm text-text-secondary hover:bg-primary-50 hover:text-primary">Configuración</a>
+                                <hr class="my-1 border-subtle" />
+                                <a href="user_login.html" class="block px-4 py-2 text-sm text-text-secondary hover:bg-primary-50 hover:text-primary">Cerrar Sesión</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-text-secondary hover:text-primary" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-7xl mx-auto">
+            <!-- Header Section -->
+            <div class="mb-8">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
+                    <div>
+                        <h1 class="text-fluid-3xl font-serif font-bold text-primary mb-2">Gestión de Reservas</h1>
+                        <p class="text-text-secondary">Administra tus experiencias y reservas de turismo</p>
+                    </div>
+                    
+                    <!-- View Toggle -->
+                    <div class="mt-4 sm:mt-0 flex items-center space-x-2">
+                        <div class="bg-surface rounded-lg p-1 shadow-warm border border-subtle">
+                            <button onclick="switchView('customer')" id="customerViewBtn" class="px-4 py-2 rounded-md text-sm font-medium bg-primary text-white transition-colors">
+                                <i class="fas fa-user mr-2"></i>Cliente
+                            </button>
+                            <button onclick="switchView('entrepreneur')" id="entrepreneurViewBtn" class="px-4 py-2 rounded-md text-sm font-medium text-text-secondary hover:text-primary transition-colors">
+                                <i class="fas fa-briefcase mr-2"></i>Emprendedor
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters Section -->
+            <div class="bg-surface rounded-xl p-6 shadow-warm border border-subtle mb-8">
+                <div class="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4">
+                    <!-- Search and Filters -->
+                    <div class="flex flex-col sm:flex-row gap-4 flex-1">
+                        <!-- Search -->
+                        <div class="relative flex-1 max-w-md">
+                            <i class="fas fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-text-secondary"></i>
+                            <input type="text" placeholder="Buscar por confirmación, experiencia..." class="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" />
+                        </div>
+                        
+                        <!-- Status Filter -->
+                        <select class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <option value>Todos los estados</option>
+                            <option value="confirmed">Confirmado</option>
+                            <option value="pending">Pendiente</option>
+                            <option value="completed">Completado</option>
+                            <option value="cancelled">Cancelado</option>
+                        </select>
+                        
+                        <!-- Date Range -->
+                        <input type="date" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" />
+                    </div>
+                    
+                    <!-- View Options -->
+                    <div class="flex items-center space-x-2">
+                        <button onclick="toggleView('cards')" id="cardsViewBtn" class="p-2 rounded-lg bg-primary text-white">
+                            <i class="fas fa-th-large"></i>
+                        </button>
+                        <button onclick="toggleView('calendar')" id="calendarViewBtn" class="p-2 rounded-lg text-text-secondary hover:bg-primary-50 hover:text-primary transition-colors">
+                            <i class="fas fa-calendar-alt"></i>
+                        </button>
+                        <button onclick="toggleView('list')" id="listViewBtn" class="p-2 rounded-lg text-text-secondary hover:bg-primary-50 hover:text-primary transition-colors">
+                            <i class="fas fa-list"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Customer View -->
+            <div id="customerView" class="space-y-6">
+                <!-- Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-surface rounded-xl p-6 shadow-warm border border-subtle">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-calendar-check text-primary text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-text-secondary text-sm">Reservas Activas</p>
+                                <p class="text-2xl font-bold text-primary">3</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-surface rounded-xl p-6 shadow-warm border border-subtle">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-success-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-check-circle text-success text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-text-secondary text-sm">Completadas</p>
+                                <p class="text-2xl font-bold text-success">12</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-surface rounded-xl p-6 shadow-warm border border-subtle">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-warning-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-clock text-warning text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-text-secondary text-sm">Pendientes</p>
+                                <p class="text-2xl font-bold text-warning">1</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-surface rounded-xl p-6 shadow-warm border border-subtle">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-dollar-sign text-accent text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-text-secondary text-sm">Total Gastado</p>
+                                <p class="text-2xl font-bold text-accent">$2,450,000</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Booking Cards -->
+                <div id="bookingCards" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Confirmed Booking -->
+                    <div class="bg-surface rounded-xl shadow-warm border border-subtle overflow-hidden card-elevation">
+                        <div class="relative">
+                            <img src="https://images.pixabay.com/photos/2019/09/16/18/03/guatape-4481744_1280.jpg" alt="Tour Guatapé" class="w-full h-48 object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-success text-white px-3 py-1 rounded-full text-sm font-medium">
+                                    <i class="fas fa-check-circle mr-1"></i>Confirmado
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="font-serif font-semibold text-lg text-primary mb-1">Tour Completo Guatapé</h3>
+                                    <p class="text-text-secondary text-sm">Experiencias Antioquia</p>
+                                </div>
+                                <button onclick="openBookingDetail('booking1')" class="text-primary hover:text-primary-600 transition-colors">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-calendar mr-3 text-primary w-4"></i>
+                                    <span>25 de Septiembre, 2025 - 8:00 AM</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-users mr-3 text-primary w-4"></i>
+                                    <span>2 personas</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-map-marker-alt mr-3 text-primary w-4"></i>
+                                    <span>Punto de encuentro: Parque Principal Guatapé</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-credit-card mr-3 text-primary w-4"></i>
+                                    <span>$320,000 COP - Pagado</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-primary-50 rounded-lg p-3 mb-4">
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-info-circle text-primary mr-2"></i>
+                                    <span class="text-primary font-medium">Confirmación: #GT2025-001</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-2">
+                                <button onclick="openChat('booking1')" class="flex-1 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring">
+                                    <i class="fas fa-comments mr-2"></i>Chat
+                                </button>
+                                <button onclick="modifyBooking('booking1')" class="flex-1 border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary-50 transition-colors">
+                                    <i class="fas fa-edit mr-2"></i>Modificar
+                                </button>
+                                <button onclick="cancelBooking('booking1')" class="px-4 py-2 text-error hover:bg-error-50 rounded-lg transition-colors">
+                                    <i class="fas fa-times"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Pending Booking -->
+                    <div class="bg-surface rounded-xl shadow-warm border border-subtle overflow-hidden card-elevation">
+                        <div class="relative">
+                            <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Taller Artesanías" class="w-full h-48 object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-warning text-white px-3 py-1 rounded-full text-sm font-medium">
+                                    <i class="fas fa-clock mr-1"></i>Pendiente
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="font-serif font-semibold text-lg text-primary mb-1">Taller de Artesanías</h3>
+                                    <p class="text-text-secondary text-sm">Artesanías Paisa</p>
+                                </div>
+                                <button onclick="openBookingDetail('booking2')" class="text-primary hover:text-primary-600 transition-colors">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-calendar mr-3 text-primary w-4"></i>
+                                    <span>28 de Septiembre, 2025 - 2:00 PM</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-users mr-3 text-primary w-4"></i>
+                                    <span>1 persona</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-map-marker-alt mr-3 text-primary w-4"></i>
+                                    <span>Taller: Calle 10 #15-20, El Retiro</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-credit-card mr-3 text-primary w-4"></i>
+                                    <span>$85,000 COP - Pendiente de pago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-warning-50 rounded-lg p-3 mb-4">
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-exclamation-triangle text-warning mr-2"></i>
+                                    <span class="text-warning font-medium">Confirma el pago para asegurar tu reserva</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-2">
+                                <button onclick="payBooking('booking2')" class="flex-1 bg-accent text-white px-4 py-2 rounded-lg hover:bg-accent-600 transition-colors btn-spring">
+                                    <i class="fas fa-credit-card mr-2"></i>Pagar Ahora
+                                </button>
+                                <button onclick="openChat('booking2')" class="flex-1 border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary-50 transition-colors">
+                                    <i class="fas fa-comments mr-2"></i>Chat
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Completed Booking -->
+                    <div class="bg-surface rounded-xl shadow-warm border border-subtle overflow-hidden card-elevation">
+                        <div class="relative">
+                            <img src="https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Tour Gastronómico" class="w-full h-48 object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <div class="absolute top-4 right-4">
+                                <span class="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                                    <i class="fas fa-star mr-1"></i>Completado
+                                </span>
+                            </div>
+                        </div>
+                        
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="font-serif font-semibold text-lg text-primary mb-1">Tour Gastronómico Medellín</h3>
+                                    <p class="text-text-secondary text-sm">Sabores Paisas</p>
+                                </div>
+                                <button onclick="openBookingDetail('booking3')" class="text-primary hover:text-primary-600 transition-colors">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </button>
+                            </div>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-calendar mr-3 text-primary w-4"></i>
+                                    <span>15 de Septiembre, 2025 - 6:00 PM</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-users mr-3 text-primary w-4"></i>
+                                    <span>2 personas</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-star mr-3 text-accent w-4"></i>
+                                    <span>Calificación: 5.0 ⭐⭐⭐⭐⭐</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-credit-card mr-3 text-primary w-4"></i>
+                                    <span>$180,000 COP - Pagado</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-success-50 rounded-lg p-3 mb-4">
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-check-circle text-success mr-2"></i>
+                                    <span class="text-success font-medium">Experiencia completada - ¡Gracias por tu reseña!</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-2">
+                                <button onclick="rebookExperience('booking3')" class="flex-1 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring">
+                                    <i class="fas fa-redo mr-2"></i>Reservar Nuevamente
+                                </button>
+                                <button onclick="shareExperience('booking3')" class="flex-1 border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary-50 transition-colors">
+                                    <i class="fas fa-share mr-2"></i>Compartir
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Entrepreneur View (Hidden by default) -->
+            <div id="entrepreneurView" class="space-y-6 hidden">
+                <!-- Entrepreneur Stats -->
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
+                    <div class="bg-surface rounded-xl p-6 shadow-warm border border-subtle">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-calendar-check text-primary text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-text-secondary text-sm">Reservas Hoy</p>
+                                <p class="text-2xl font-bold text-primary">8</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-surface rounded-xl p-6 shadow-warm border border-subtle">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-dollar-sign text-accent text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-text-secondary text-sm">Ingresos Mes</p>
+                                <p class="text-2xl font-bold text-accent">$4,850,000</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-surface rounded-xl p-6 shadow-warm border border-subtle">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-success-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-percentage text-success text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-text-secondary text-sm">Ocupación</p>
+                                <p class="text-2xl font-bold text-success">85%</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-surface rounded-xl p-6 shadow-warm border border-subtle">
+                        <div class="flex items-center">
+                            <div class="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center">
+                                <i class="fas fa-star text-secondary text-xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <p class="text-text-secondary text-sm">Calificación</p>
+                                <p class="text-2xl font-bold text-secondary">4.8</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Entrepreneur Bookings -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <!-- Today's Booking -->
+                    <div class="bg-surface rounded-xl shadow-warm border border-subtle overflow-hidden card-elevation">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="font-serif font-semibold text-lg text-primary mb-1">Tour Completo Guatapé</h3>
+                                    <p class="text-text-secondary text-sm">Hoy - 8:00 AM</p>
+                                </div>
+                                <span class="bg-success text-white px-3 py-1 rounded-full text-sm font-medium">
+                                    <i class="fas fa-check-circle mr-1"></i>Confirmado
+                                </span>
+                            </div>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-user mr-3 text-primary w-4"></i>
+                                    <span>María González - 2 personas</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-phone mr-3 text-primary w-4"></i>
+                                    <span>+57 300 123 4567</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-envelope mr-3 text-primary w-4"></i>
+                                    <span>maria.gonzalez@email.com</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-credit-card mr-3 text-primary w-4"></i>
+                                    <span>$320,000 COP - Pagado</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-primary-50 rounded-lg p-3 mb-4">
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-info-circle text-primary mr-2"></i>
+                                    <span class="text-primary font-medium">Requerimientos especiales: Vegetariano</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-2">
+                                <button onclick="contactCustomer('customer1')" class="flex-1 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring">
+                                    <i class="fas fa-phone mr-2"></i>Contactar
+                                </button>
+                                <button onclick="openChat('customer1')" class="flex-1 border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary-50 transition-colors">
+                                    <i class="fas fa-comments mr-2"></i>Chat
+                                </button>
+                                <button onclick="viewDetails('customer1')" class="px-4 py-2 text-primary hover:bg-primary-50 rounded-lg transition-colors">
+                                    <i class="fas fa-eye"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Upcoming Booking -->
+                    <div class="bg-surface rounded-xl shadow-warm border border-subtle overflow-hidden card-elevation">
+                        <div class="p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h3 class="font-serif font-semibold text-lg text-primary mb-1">Taller de Artesanías</h3>
+                                    <p class="text-text-secondary text-sm">Mañana - 2:00 PM</p>
+                                </div>
+                                <span class="bg-warning text-white px-3 py-1 rounded-full text-sm font-medium">
+                                    <i class="fas fa-clock mr-1"></i>Pendiente
+                                </span>
+                            </div>
+                            
+                            <div class="space-y-3 mb-4">
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-user mr-3 text-primary w-4"></i>
+                                    <span>Carlos Rodríguez - 1 persona</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-phone mr-3 text-primary w-4"></i>
+                                    <span>+57 301 987 6543</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-envelope mr-3 text-primary w-4"></i>
+                                    <span>carlos.rodriguez@email.com</span>
+                                </div>
+                                <div class="flex items-center text-sm text-text-secondary">
+                                    <i class="fas fa-credit-card mr-3 text-primary w-4"></i>
+                                    <span>$85,000 COP - Pendiente de pago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-warning-50 rounded-lg p-3 mb-4">
+                                <div class="flex items-center text-sm">
+                                    <i class="fas fa-exclamation-triangle text-warning mr-2"></i>
+                                    <span class="text-warning font-medium">Cliente debe confirmar pago</span>
+                                </div>
+                            </div>
+                            
+                            <div class="flex flex-col sm:flex-row gap-2">
+                                <button onclick="sendPaymentReminder('customer2')" class="flex-1 bg-accent text-white px-4 py-2 rounded-lg hover:bg-accent-600 transition-colors btn-spring">
+                                    <i class="fas fa-bell mr-2"></i>Recordar Pago
+                                </button>
+                                <button onclick="openChat('customer2')" class="flex-1 border border-primary text-primary px-4 py-2 rounded-lg hover:bg-primary-50 transition-colors">
+                                    <i class="fas fa-comments mr-2"></i>Chat
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar View (Hidden by default) -->
+            <div id="calendarView" class="hidden">
+                <div class="bg-surface rounded-xl shadow-warm border border-subtle p-6">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="text-xl font-serif font-semibold text-primary">Septiembre 2025</h2>
+                        <div class="flex items-center space-x-2">
+                            <button class="p-2 text-text-secondary hover:text-primary transition-colors">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <button class="p-2 text-text-secondary hover:text-primary transition-colors">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Calendar Grid -->
+                    <div class="grid grid-cols-7 gap-2 mb-4">
+                        <div class="text-center text-sm font-medium text-text-secondary py-2">Dom</div>
+                        <div class="text-center text-sm font-medium text-text-secondary py-2">Lun</div>
+                        <div class="text-center text-sm font-medium text-text-secondary py-2">Mar</div>
+                        <div class="text-center text-sm font-medium text-text-secondary py-2">Mié</div>
+                        <div class="text-center text-sm font-medium text-text-secondary py-2">Jue</div>
+                        <div class="text-center text-sm font-medium text-text-secondary py-2">Vie</div>
+                        <div class="text-center text-sm font-medium text-text-secondary py-2">Sáb</div>
+                        
+                        <!-- Calendar Days -->
+                        <div class="text-center py-3 text-text-secondary">1</div>
+                        <div class="text-center py-3 text-text-secondary">2</div>
+                        <div class="text-center py-3 text-text-secondary">3</div>
+                        <div class="text-center py-3 text-text-secondary">4</div>
+                        <div class="text-center py-3 text-text-secondary">5</div>
+                        <div class="text-center py-3 text-text-secondary">6</div>
+                        <div class="text-center py-3 text-text-secondary">7</div>
+                        
+                        <div class="text-center py-3 text-text-secondary">8</div>
+                        <div class="text-center py-3 text-text-secondary">9</div>
+                        <div class="text-center py-3 text-text-secondary">10</div>
+                        <div class="text-center py-3 text-text-secondary">11</div>
+                        <div class="text-center py-3 text-text-secondary">12</div>
+                        <div class="text-center py-3 text-text-secondary">13</div>
+                        <div class="text-center py-3 text-text-secondary">14</div>
+                        
+                        <div class="text-center py-3 relative">
+                            <span class="text-text-secondary">15</span>
+                            <div class="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-success rounded-full"></div>
+                        </div>
+                        <div class="text-center py-3 text-text-secondary">16</div>
+                        <div class="text-center py-3 text-text-secondary">17</div>
+                        <div class="text-center py-3 text-text-secondary">18</div>
+                        <div class="text-center py-3 text-text-secondary">19</div>
+                        <div class="text-center py-3 text-text-secondary">20</div>
+                        <div class="text-center py-3 text-text-secondary">21</div>
+                        
+                        <div class="text-center py-3 bg-primary-50 rounded-lg relative">
+                            <span class="text-primary font-medium">22</span>
+                            <div class="text-xs text-primary mt-1">Hoy</div>
+                        </div>
+                        <div class="text-center py-3 text-text-secondary">23</div>
+                        <div class="text-center py-3 text-text-secondary">24</div>
+                        <div class="text-center py-3 relative">
+                            <span class="text-text-secondary">25</span>
+                            <div class="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-primary rounded-full"></div>
+                        </div>
+                        <div class="text-center py-3 text-text-secondary">26</div>
+                        <div class="text-center py-3 text-text-secondary">27</div>
+                        <div class="text-center py-3 relative">
+                            <span class="text-text-secondary">28</span>
+                            <div class="absolute bottom-1 left-1/2 transform -translate-x-1/2 w-2 h-2 bg-warning rounded-full"></div>
+                        </div>
+                        
+                        <div class="text-center py-3 text-text-secondary">29</div>
+                        <div class="text-center py-3 text-text-secondary">30</div>
+                    </div>
+                    
+                    <!-- Legend -->
+                    <div class="flex items-center justify-center space-x-6 text-sm">
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-success rounded-full mr-2"></div>
+                            <span class="text-text-secondary">Completado</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-primary rounded-full mr-2"></div>
+                            <span class="text-text-secondary">Confirmado</span>
+                        </div>
+                        <div class="flex items-center">
+                            <div class="w-3 h-3 bg-warning rounded-full mr-2"></div>
+                            <span class="text-text-secondary">Pendiente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Chat Modal -->
+    <div id="chatModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-surface rounded-xl max-w-md w-full max-h-96 flex flex-col">
+            <div class="p-4 border-b border-subtle">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center">
+                        <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Usuario" class="w-8 h-8 rounded-full mr-3" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        <div>
+                            <h3 class="font-medium text-primary">Experiencias Antioquia</h3>
+                            <p class="text-xs text-success">En línea</p>
+                        </div>
+                    </div>
+                    <button onclick="closeChat()" class="text-text-secondary hover:text-primary">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+            </div>
+            
+            <div class="flex-1 p-4 overflow-y-auto space-y-3">
+                <div class="flex">
+                    <div class="bg-primary-100 rounded-lg p-3 max-w-xs">
+                        <p class="text-sm text-primary">¡Hola! ¿En qué puedo ayudarte con tu reserva?</p>
+                        <p class="text-xs text-text-secondary mt-1">10:30 AM</p>
+                    </div>
+                </div>
+                
+                <div class="flex justify-end">
+                    <div class="bg-primary rounded-lg p-3 max-w-xs">
+                        <p class="text-sm text-white">Hola, tengo una pregunta sobre el punto de encuentro</p>
+                        <p class="text-xs text-primary-200 mt-1">10:32 AM</p>
+                    </div>
+                </div>
+                
+                <div class="flex">
+                    <div class="bg-primary-100 rounded-lg p-3 max-w-xs">
+                        <p class="text-sm text-primary">Por supuesto, el punto de encuentro es en el Parque Principal de Guatapé. Te envío la ubicación exacta.</p>
+                        <p class="text-xs text-text-secondary mt-1">10:33 AM</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t border-subtle">
+                <div class="flex items-center space-x-2">
+                    <input type="text" placeholder="Escribe tu mensaje..." class="flex-1 px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent" />
+                    <button class="bg-primary text-white p-2 rounded-lg hover:bg-primary-600 transition-colors">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Booking Detail Modal -->
+    <div id="bookingDetailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-surface rounded-xl max-w-2xl w-full max-h-96 overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-6">
+                    <h3 class="text-xl font-serif font-bold text-primary">Detalles de la Reserva</h3>
+                    <button onclick="closeBookingDetail()" class="text-text-secondary hover:text-primary">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                
+                <div class="space-y-6">
+                    <!-- Experience Info -->
+                    <div>
+                        <h4 class="font-semibold text-primary mb-3">Información de la Experiencia</h4>
+                        <div class="bg-primary-50 rounded-lg p-4 space-y-2">
+                            <p><span class="font-medium">Experiencia:</span> Tour Completo Guatapé</p>
+                            <p><span class="font-medium">Proveedor:</span> Experiencias Antioquia</p>
+                            <p><span class="font-medium">Fecha:</span> 25 de Septiembre, 2025</p>
+                            <p><span class="font-medium">Hora:</span> 8:00 AM - 6:00 PM</p>
+                            <p><span class="font-medium">Duración:</span> 10 horas</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Participants -->
+                    <div>
+                        <h4 class="font-semibold text-primary mb-3">Participantes</h4>
+                        <div class="space-y-2">
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <span>María González (Adulto)</span>
+                                <span class="text-primary font-medium">$160,000</span>
+                            </div>
+                            <div class="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
+                                <span>Juan González (Adulto)</span>
+                                <span class="text-primary font-medium">$160,000</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Payment Info -->
+                    <div>
+                        <h4 class="font-semibold text-primary mb-3">Información de Pago</h4>
+                        <div class="bg-success-50 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-2">
+                                <span>Subtotal:</span>
+                                <span>$320,000</span>
+                            </div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span>Descuento:</span>
+                                <span class="text-success">-$0</span>
+                            </div>
+                            <div class="flex items-center justify-between font-semibold text-lg border-t pt-2">
+                                <span>Total:</span>
+                                <span class="text-primary">$320,000</span>
+                            </div>
+                            <div class="mt-2 flex items-center text-success">
+                                <i class="fas fa-check-circle mr-2"></i>
+                                <span class="font-medium">Pagado completamente</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div>
+                        <h4 class="font-semibold text-primary mb-3">Información de Contacto</h4>
+                        <div class="space-y-2 text-sm">
+                            <p><span class="font-medium">Teléfono:</span> +57 300 123 4567</p>
+                            <p><span class="font-medium">Email:</span> maria.gonzalez@email.com</p>
+                            <p><span class="font-medium">Punto de encuentro:</span> Parque Principal Guatapé</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex flex-col sm:flex-row gap-3 mt-6">
+                    <button class="flex-1 bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
+                        <i class="fas fa-edit mr-2"></i>Modificar Reserva
+                    </button>
+                    <button class="flex-1 border border-error text-error px-4 py-2 rounded-lg hover:bg-error-50 transition-colors">
+                        <i class="fas fa-times mr-2"></i>Cancelar Reserva
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary-800 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-accent" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L3 7v10c0 8.5 5.5 16.5 13 18 7.5-1.5 13-9.5 13-18V7L16 2z"/>
+                            <circle cx="16" cy="14" r="4" fill="white"/>
+                            <path d="M12 20h8v2h-8z" fill="white"/>
+                        </svg>
+                        <span class="ml-2 text-xl font-serif font-bold">AntioqAPP</span>
+                    </div>
+                    <p class="text-primary-200 text-sm">Descubre la auténtica cultura de Antioquia</p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3">Explorar</h4>
+                    <ul class="space-y-2 text-sm text-primary-200">
+                        <li><a href="tourism_routes.html" class="hover:text-white transition-colors">Rutas Turísticas</a></li>
+                        <li><a href="events_calendar.html" class="hover:text-white transition-colors">Eventos</a></li>
+                        <li><a href="business_directory.html" class="hover:text-white transition-colors">Negocios</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3">Cuenta</h4>
+                    <ul class="space-y-2 text-sm text-primary-200">
+                        <li><a href="user_login.html" class="hover:text-white transition-colors">Iniciar Sesión</a></li>
+                        <li><a href="user_registration.html" class="hover:text-white transition-colors">Registrarse</a></li>
+                        <li><a href="booking_management.html" class="hover:text-white transition-colors">Mis Reservas</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-3">Síguenos</h4>
+                    <div class="flex space-x-3">
+                        <a href="javascript:void(0)" class="text-primary-200 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="text-primary-200 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="text-primary-200 hover:text-white transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="border-t border-primary-700 mt-8 pt-8 text-center text-sm text-primary-200">
+                <p>&copy; 2025 AntioqAPP. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // View switching functionality
+        function switchView(viewType) {
+            const customerView = document.getElementById('customerView');
+            const entrepreneurView = document.getElementById('entrepreneurView');
+            const customerBtn = document.getElementById('customerViewBtn');
+            const entrepreneurBtn = document.getElementById('entrepreneurViewBtn');
+            
+            if (viewType === 'customer') {
+                customerView.classList.remove('hidden');
+                entrepreneurView.classList.add('hidden');
+                customerBtn.className = 'px-4 py-2 rounded-md text-sm font-medium bg-primary text-white transition-colors';
+                entrepreneurBtn.className = 'px-4 py-2 rounded-md text-sm font-medium text-text-secondary hover:text-primary transition-colors';
+            } else {
+                customerView.classList.add('hidden');
+                entrepreneurView.classList.remove('hidden');
+                entrepreneurBtn.className = 'px-4 py-2 rounded-md text-sm font-medium bg-primary text-white transition-colors';
+                customerBtn.className = 'px-4 py-2 rounded-md text-sm font-medium text-text-secondary hover:text-primary transition-colors';
+            }
+        }
+
+        // Layout view toggle
+        function toggleView(viewType) {
+            const cardsView = document.getElementById('bookingCards');
+            const calendarView = document.getElementById('calendarView');
+            const cardsBtn = document.getElementById('cardsViewBtn');
+            const calendarBtn = document.getElementById('calendarViewBtn');
+            const listBtn = document.getElementById('listViewBtn');
+            
+            // Reset all buttons
+            [cardsBtn, calendarBtn, listBtn].forEach(btn => {
+                btn.className = 'p-2 rounded-lg text-text-secondary hover:bg-primary-50 hover:text-primary transition-colors';
+            });
+            
+            if (viewType === 'cards') {
+                cardsView.classList.remove('hidden');
+                calendarView.classList.add('hidden');
+                cardsBtn.className = 'p-2 rounded-lg bg-primary text-white';
+            } else if (viewType === 'calendar') {
+                cardsView.classList.add('hidden');
+                calendarView.classList.remove('hidden');
+                calendarBtn.className = 'p-2 rounded-lg bg-primary text-white';
+            } else if (viewType === 'list') {
+                // List view would be implemented here
+                cardsView.classList.remove('hidden');
+                calendarView.classList.add('hidden');
+                listBtn.className = 'p-2 rounded-lg bg-primary text-white';
+            }
+        }
+
+        // User menu toggle
+        function toggleUserMenu() {
+            const userMenu = document.getElementById('userMenu');
+            userMenu.classList.toggle('hidden');
+        }
+
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            // Mobile menu implementation would go here
+            console.log('Mobile menu toggled');
+        }
+
+        // Chat functionality
+        function openChat(bookingId) {
+            document.getElementById('chatModal').classList.remove('hidden');
+        }
+
+        function closeChat() {
+            document.getElementById('chatModal').classList.add('hidden');
+        }
+
+        // Booking detail modal
+        function openBookingDetail(bookingId) {
+            document.getElementById('bookingDetailModal').classList.remove('hidden');
+        }
+
+        function closeBookingDetail() {
+            document.getElementById('bookingDetailModal').classList.add('hidden');
+        }
+
+        // Booking actions
+        function modifyBooking(bookingId) {
+            alert('Función de modificación de reserva - ID: ' + bookingId);
+        }
+
+        function cancelBooking(bookingId) {
+            if (confirm('¿Estás seguro de que deseas cancelar esta reserva?')) {
+                alert('Reserva cancelada - ID: ' + bookingId);
+            }
+        }
+
+        function payBooking(bookingId) {
+            alert('Redirigiendo a pasarela de pago - ID: ' + bookingId);
+        }
+
+        function rebookExperience(bookingId) {
+            alert('Redirigiendo para nueva reserva - ID: ' + bookingId);
+        }
+
+        function shareExperience(bookingId) {
+            if (navigator.share) {
+                navigator.share({
+                    title: 'Mi experiencia en AntioqAPP',
+                    text: '¡Tuve una experiencia increíble!',
+                    url: window.location.href
+                });
+            } else {
+                alert('Función de compartir - ID: ' + bookingId);
+            }
+        }
+
+        // Entrepreneur functions
+        function contactCustomer(customerId) {
+            alert('Contactando cliente - ID: ' + customerId);
+        }
+
+        function sendPaymentReminder(customerId) {
+            alert('Recordatorio de pago enviado - ID: ' + customerId);
+        }
+
+        function viewDetails(customerId) {
+            alert('Ver detalles del cliente - ID: ' + customerId);
+        }
+
+        // Close modals when clicking outside
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('bg-black')) {
+                e.target.classList.add('hidden');
+            }
+        });
+
+        // Close user menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const userMenu = document.getElementById('userMenu');
+            const userButton = e.target.closest('button');
+            
+            if (!userButton || !userButton.onclick || userButton.onclick.toString().indexOf('toggleUserMenu') === -1) {
+                userMenu.classList.add('hidden');
+            }
+        });
+
+        // Initialize default view
+        document.addEventListener('DOMContentLoaded', function() {
+            switchView('customer');
+            toggleView('cards');
+        });
+    </script>
+<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+</html>
