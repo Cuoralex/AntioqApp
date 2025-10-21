@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Calendario de Eventos - AntioqAPP</title>
     <link rel="stylesheet" href="../css/main.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-<script type="module" src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fantioqapp6359back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+    <script type="module"
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fantioqapp6359back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
 </head>
+
 <body class="bg-background min-h-screen">
     <!-- Navigation Header -->
     <nav class="bg-surface shadow-warm border-b border-subtle">
@@ -16,22 +19,27 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
-                        <path d="M16 2L3 7v10c0 8.5 5.5 16.5 13 18 7.5-1.5 13-9.5 13-18V7L16 2z"/>
-                        <circle cx="16" cy="14" r="4" fill="white"/>
-                        <path d="M12 20h8v2h-8z" fill="white"/>
+                        <path d="M16 2L3 7v10c0 8.5 5.5 16.5 13 18 7.5-1.5 13-9.5 13-18V7L16 2z" />
+                        <circle cx="16" cy="14" r="4" fill="white" />
+                        <path d="M12 20h8v2h-8z" fill="white" />
                     </svg>
                     <span class="ml-2 text-xl font-serif font-bold text-primary">AntioqAPP</span>
                 </div>
-                
+
                 <!-- Navigation Links -->
                 <div class="hidden md:flex items-center space-x-8">
-                    <a href="tourism_routes.html" class="text-text-secondary hover:text-primary transition-colors">Rutas</a>
+                    <a href="tourism_routes.html"
+                        class="text-text-secondary hover:text-primary transition-colors">Rutas</a>
                     <a href="events_calendar.html" class="text-primary font-medium">Eventos</a>
-                    <a href="business_directory.html" class="text-text-secondary hover:text-primary transition-colors">Negocios</a>
-                    <a href="booking_management.html" class="text-text-secondary hover:text-primary transition-colors">Mis Reservas</a>
-                    <a href="user_login.html" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">Iniciar Sesión</a>
+                    <a href="business_directory.html"
+                        class="text-text-secondary hover:text-primary transition-colors">Negocios</a>
+                    <a href="booking_management.html"
+                        class="text-text-secondary hover:text-primary transition-colors">Mis Reservas</a>
+                    <a href="user_login.html"
+                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">Iniciar
+                        Sesión</a>
                 </div>
-                
+
                 <!-- Mobile Menu Button -->
                 <div class="md:hidden">
                     <button type="button" class="text-text-secondary hover:text-primary" onclick="toggleMobileMenu()">
@@ -39,15 +47,21 @@
                     </button>
                 </div>
             </div>
-            
+
             <!-- Mobile Menu -->
             <div id="mobileMenu" class="md:hidden hidden border-t border-subtle py-4">
                 <div class="space-y-2">
-                    <a href="tourism_routes.html" class="block px-4 py-2 text-text-secondary hover:text-primary transition-colors">Rutas</a>
+                    <a href="tourism_routes.html"
+                        class="block px-4 py-2 text-text-secondary hover:text-primary transition-colors">Rutas</a>
                     <a href="events_calendar.html" class="block px-4 py-2 text-primary font-medium">Eventos</a>
-                    <a href="business_directory.html" class="block px-4 py-2 text-text-secondary hover:text-primary transition-colors">Negocios</a>
-                    <a href="booking_management.html" class="block px-4 py-2 text-text-secondary hover:text-primary transition-colors">Mis Reservas</a>
-                    <a href="user_login.html" class="block px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-600 transition-colors">Iniciar Sesión</a>
+                    <a href="business_directory.html"
+                        class="block px-4 py-2 text-text-secondary hover:text-primary transition-colors">Negocios</a>
+                    <a href="booking_management.html"
+                        class="block px-4 py-2 text-text-secondary hover:text-primary transition-colors">Mis
+                        Reservas</a>
+                    <a href="user_login.html"
+                        class="block px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-600 transition-colors">Iniciar
+                        Sesión</a>
                 </div>
             </div>
         </div>
@@ -59,7 +73,8 @@
             <div class="text-center">
                 <h1 class="text-fluid-4xl font-serif font-bold mb-4">Eventos y Festivales</h1>
                 <p class="text-fluid-lg text-primary-100 max-w-2xl mx-auto">
-                    Descubre las tradiciones culturales, festivales y celebraciones que hacen de Antioquia un destino único
+                    Descubre las tradiciones culturales, festivales y celebraciones que hacen de Antioquia un destino
+                    único
                 </p>
             </div>
         </div>
@@ -71,27 +86,33 @@
             <div class="flex items-center justify-between mb-6">
                 <h2 class="text-fluid-2xl font-serif font-bold text-primary">Eventos Destacados</h2>
                 <div class="flex space-x-2">
-                    <button onclick="prevFeatured()" class="p-2 rounded-full bg-white shadow-warm hover:shadow-warm-md transition-all">
+                    <button onclick="prevFeatured()"
+                        class="p-2 rounded-full bg-white shadow-warm hover:shadow-warm-md transition-all">
                         <i class="fas fa-chevron-left text-primary"></i>
                     </button>
-                    <button onclick="nextFeatured()" class="p-2 rounded-full bg-white shadow-warm hover:shadow-warm-md transition-all">
+                    <button onclick="nextFeatured()"
+                        class="p-2 rounded-full bg-white shadow-warm hover:shadow-warm-md transition-all">
                         <i class="fas fa-chevron-right text-primary"></i>
                     </button>
                 </div>
             </div>
-            
+
             <div class="relative overflow-hidden">
                 <div id="featuredCarousel" class="flex transition-transform duration-300 ease-in-out">
                     <!-- Featured Event 1 -->
                     <div class="flex-none w-full md:w-1/2 lg:w-1/3 px-3">
                         <div class="bg-surface rounded-xl overflow-hidden shadow-warm card-elevation">
                             <div class="relative h-48">
-                                <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Festival de las Flores" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                    alt="Festival de las Flores" class="w-full h-full object-cover"
+                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
                                 <div class="absolute top-4 left-4">
-                                    <span class="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">Destacado</span>
+                                    <span
+                                        class="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">Destacado</span>
                                 </div>
                                 <div class="absolute top-4 right-4">
-                                    <span class="bg-success text-white px-3 py-1 rounded-full text-sm font-medium">Disponible</span>
+                                    <span
+                                        class="bg-success text-white px-3 py-1 rounded-full text-sm font-medium">Disponible</span>
                                 </div>
                             </div>
                             <div class="p-6">
@@ -101,14 +122,17 @@
                                     <i class="fas fa-map-marker-alt ml-4 mr-2"></i>
                                     <span>Medellín</span>
                                 </div>
-                                <h3 class="font-serif font-semibold text-lg text-primary mb-2">Festival de las Flores</h3>
-                                <p class="text-text-secondary text-sm mb-4">La celebración más emblemática de Medellín con desfiles, silleteros y tradición paisa.</p>
+                                <h3 class="font-serif font-semibold text-lg text-primary mb-2">Festival de las Flores
+                                </h3>
+                                <p class="text-text-secondary text-sm mb-4">La celebración más emblemática de Medellín
+                                    con desfiles, silleteros y tradición paisa.</p>
                                 <div class="flex items-center justify-between">
                                     <div class="text-primary font-semibold">
                                         <span class="text-sm text-text-secondary line-through">$80.000</span>
                                         <span class="text-lg ml-2">$65.000</span>
                                     </div>
-                                    <button onclick="openEventDetail('festival-flores')" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring">
+                                    <button onclick="openEventDetail('festival-flores')"
+                                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring">
                                         Ver Detalles
                                     </button>
                                 </div>
@@ -120,9 +144,12 @@
                     <div class="flex-none w-full md:w-1/2 lg:w-1/3 px-3">
                         <div class="bg-surface rounded-xl overflow-hidden shadow-warm card-elevation">
                             <div class="relative h-48">
-                                <img src="https://images.pixabay.com/photo/2017/08/06/12/06/people-2591874_960_720.jpg" alt="Feria de Manizales" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <img src="https://images.pixabay.com/photo/2017/08/06/12/06/people-2591874_960_720.jpg"
+                                    alt="Feria de Manizales" class="w-full h-full object-cover"
+                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
                                 <div class="absolute top-4 left-4">
-                                    <span class="bg-warning text-white px-3 py-1 rounded-full text-sm font-medium">Próximamente</span>
+                                    <span
+                                        class="bg-warning text-white px-3 py-1 rounded-full text-sm font-medium">Próximamente</span>
                                 </div>
                             </div>
                             <div class="p-6">
@@ -133,12 +160,14 @@
                                     <span>Manizales</span>
                                 </div>
                                 <h3 class="font-serif font-semibold text-lg text-primary mb-2">Feria de Manizales</h3>
-                                <p class="text-text-secondary text-sm mb-4">Una de las ferias más importantes de Colombia con corridas de toros, conciertos y folclor.</p>
+                                <p class="text-text-secondary text-sm mb-4">Una de las ferias más importantes de
+                                    Colombia con corridas de toros, conciertos y folclor.</p>
                                 <div class="flex items-center justify-between">
                                     <div class="text-primary font-semibold">
                                         <span class="text-lg">Desde $45.000</span>
                                     </div>
-                                    <button onclick="openEventDetail('feria-manizales')" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring">
+                                    <button onclick="openEventDetail('feria-manizales')"
+                                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring">
                                         Ver Detalles
                                     </button>
                                 </div>
@@ -150,9 +179,12 @@
                     <div class="flex-none w-full md:w-1/2 lg:w-1/3 px-3">
                         <div class="bg-surface rounded-xl overflow-hidden shadow-warm card-elevation">
                             <div class="relative h-48">
-                                <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Festival del Café" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3"
+                                    alt="Festival del Café" class="w-full h-full object-cover"
+                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
                                 <div class="absolute top-4 left-4">
-                                    <span class="bg-secondary text-white px-3 py-1 rounded-full text-sm font-medium">Cultural</span>
+                                    <span
+                                        class="bg-secondary text-white px-3 py-1 rounded-full text-sm font-medium">Cultural</span>
                                 </div>
                             </div>
                             <div class="p-6">
@@ -162,13 +194,16 @@
                                     <i class="fas fa-map-marker-alt ml-4 mr-2"></i>
                                     <span>Chinchiná</span>
                                 </div>
-                                <h3 class="font-serif font-semibold text-lg text-primary mb-2">Festival Nacional del Café</h3>
-                                <p class="text-text-secondary text-sm mb-4">Celebración de la cultura cafetera con catas, concursos y experiencias gastronómicas.</p>
+                                <h3 class="font-serif font-semibold text-lg text-primary mb-2">Festival Nacional del
+                                    Café</h3>
+                                <p class="text-text-secondary text-sm mb-4">Celebración de la cultura cafetera con
+                                    catas, concursos y experiencias gastronómicas.</p>
                                 <div class="flex items-center justify-between">
                                     <div class="text-primary font-semibold">
                                         <span class="text-lg">$35.000</span>
                                     </div>
-                                    <button onclick="openEventDetail('festival-cafe')" class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring">
+                                    <button onclick="openEventDetail('festival-cafe')"
+                                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring">
                                         Ver Detalles
                                     </button>
                                 </div>
@@ -192,12 +227,13 @@
                         Limpiar Filtros
                     </button>
                 </div>
-                
+
                 <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                     <!-- Event Type Filter -->
                     <div>
                         <label class="block text-sm font-medium text-text-primary mb-2">Tipo de Evento</label>
-                        <select id="eventTypeFilter" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <select id="eventTypeFilter"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                             <option value>Todos los tipos</option>
                             <option value="festival">Festivales</option>
                             <option value="cultural">Tradiciones Culturales</option>
@@ -210,7 +246,8 @@
                     <!-- Location Filter -->
                     <div>
                         <label class="block text-sm font-medium text-text-primary mb-2">Municipio</label>
-                        <select id="locationFilter" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <select id="locationFilter"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                             <option value>Todos los municipios</option>
                             <option value="medellin">Medellín</option>
                             <option value="manizales">Manizales</option>
@@ -224,7 +261,8 @@
                     <!-- Date Range Filter -->
                     <div>
                         <label class="block text-sm font-medium text-text-primary mb-2">Fecha</label>
-                        <select id="dateFilter" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <select id="dateFilter"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                             <option value>Todas las fechas</option>
                             <option value="today">Hoy</option>
                             <option value="week">Esta semana</option>
@@ -236,7 +274,8 @@
                     <!-- Price Filter -->
                     <div>
                         <label class="block text-sm font-medium text-text-primary mb-2">Precio</label>
-                        <select id="priceFilter" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <select id="priceFilter"
+                            class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent">
                             <option value>Todos los precios</option>
                             <option value="free">Gratis</option>
                             <option value="low">Hasta $50.000</option>
@@ -279,7 +318,7 @@
                                 </button>
                             </div>
                         </div>
-                        
+
                         <!-- Calendar Grid -->
                         <div class="grid grid-cols-7 gap-1 text-center text-sm">
                             <!-- Days of week -->
@@ -290,7 +329,7 @@
                             <div class="p-2 text-text-secondary font-medium">Jue</div>
                             <div class="p-2 text-text-secondary font-medium">Vie</div>
                             <div class="p-2 text-text-secondary font-medium">Sáb</div>
-                            
+
                             <!-- Calendar days -->
                             <div class="p-2 text-gray-400">31</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">1</div>
@@ -299,10 +338,12 @@
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">4</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer relative">
                                 5
-                                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-accent rounded-full"></div>
+                                <div
+                                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-accent rounded-full">
+                                </div>
                             </div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">6</div>
-                            
+
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">7</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">8</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">9</div>
@@ -310,32 +351,38 @@
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">11</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer relative">
                                 12
-                                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-secondary rounded-full"></div>
+                                <div
+                                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-secondary rounded-full">
+                                </div>
                             </div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">13</div>
-                            
+
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">14</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer relative">
                                 15
-                                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-success rounded-full"></div>
+                                <div
+                                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-success rounded-full">
+                                </div>
                             </div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">16</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">17</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">18</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">19</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">20</div>
-                            
+
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">21</div>
                             <div class="p-2 bg-primary text-white rounded">22</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">23</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">24</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer relative">
                                 25
-                                <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-warning rounded-full"></div>
+                                <div
+                                    class="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-1 h-1 bg-warning rounded-full">
+                                </div>
                             </div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">26</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">27</div>
-                            
+
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">28</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">29</div>
                             <div class="p-2 hover:bg-primary-50 rounded cursor-pointer">30</div>
@@ -344,7 +391,7 @@
                             <div class="p-2 text-gray-400">3</div>
                             <div class="p-2 text-gray-400">4</div>
                         </div>
-                        
+
                         <!-- Legend -->
                         <div class="mt-4 pt-4 border-t border-gray-200">
                             <div class="space-y-2 text-xs">
@@ -375,30 +422,35 @@
                         <h3 class="font-serif font-semibold text-lg text-primary">Próximos Eventos</h3>
                         <div class="flex items-center space-x-2">
                             <span class="text-sm text-text-secondary">Ordenar por:</span>
-                            <select class="px-3 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-transparent">
+                            <select
+                                class="px-3 py-1 border border-gray-300 rounded text-sm focus:ring-2 focus:ring-primary focus:border-transparent">
                                 <option>Fecha</option>
                                 <option>Precio</option>
                                 <option>Popularidad</option>
                             </select>
                         </div>
                     </div>
-                    
+
                     <div class="space-y-6" id="eventsList">
                         <!-- Event Card 1 -->
                         <div class="bg-surface rounded-xl shadow-warm overflow-hidden card-elevation">
                             <div class="md:flex">
                                 <div class="md:w-1/3">
                                     <div class="relative h-48 md:h-full">
-                                        <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Festival de las Flores" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                        <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                            alt="Festival de las Flores" class="w-full h-full object-cover"
+                                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
                                         <div class="absolute top-4 left-4">
-                                            <span class="bg-accent text-white px-2 py-1 rounded-full text-xs font-medium">Festival</span>
+                                            <span
+                                                class="bg-accent text-white px-2 py-1 rounded-full text-xs font-medium">Festival</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="md:w-2/3 p-6">
                                     <div class="flex items-start justify-between mb-2">
                                         <div>
-                                            <h4 class="font-serif font-semibold text-xl text-primary mb-1">Festival de las Flores</h4>
+                                            <h4 class="font-serif font-semibold text-xl text-primary mb-1">Festival de
+                                                las Flores</h4>
                                             <div class="flex items-center text-sm text-text-secondary mb-2">
                                                 <i class="fas fa-calendar mr-2"></i>
                                                 <span>5-14 Agosto 2025</span>
@@ -410,15 +462,18 @@
                                                 <span>Centro de Medellín, Antioquia</span>
                                             </div>
                                         </div>
-                                        <button onclick="toggleFavorite(this)" class="p-2 rounded-full hover:bg-primary-50 transition-colors">
+                                        <button onclick="toggleFavorite(this)"
+                                            class="p-2 rounded-full hover:bg-primary-50 transition-colors">
                                             <i class="far fa-heart text-text-secondary"></i>
                                         </button>
                                     </div>
-                                    
+
                                     <p class="text-text-secondary text-sm mb-4">
-                                        La celebración más emblemática de Medellín con desfiles de silleteros, conciertos, exposiciones florales y actividades culturales que resaltan la tradición paisa.
+                                        La celebración más emblemática de Medellín con desfiles de silleteros,
+                                        conciertos, exposiciones florales y actividades culturales que resaltan la
+                                        tradición paisa.
                                     </p>
-                                    
+
                                     <div class="flex items-center justify-between mb-4">
                                         <div class="flex items-center space-x-4">
                                             <div class="flex items-center text-sm text-text-secondary">
@@ -445,18 +500,21 @@
                                             <span class="text-sm text-text-secondary">(4.9)</span>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center">
                                             <span class="text-sm text-text-secondary line-through mr-2">$80.000</span>
                                             <span class="text-xl font-bold text-primary">$65.000</span>
-                                            <span class="text-sm text-success ml-2 bg-success-50 px-2 py-1 rounded">-19%</span>
+                                            <span
+                                                class="text-sm text-success ml-2 bg-success-50 px-2 py-1 rounded">-19%</span>
                                         </div>
                                         <div class="flex space-x-2">
-                                            <button onclick="openEventDetail('festival-flores')" class="px-4 py-2 border border-primary text-primary rounded-lg hover:bg-primary-50 transition-colors">
+                                            <button onclick="openEventDetail('festival-flores')"
+                                                class="px-4 py-2 border border-primary text-primary rounded-lg hover:bg-primary-50 transition-colors">
                                                 Ver Detalles
                                             </button>
-                                            <button onclick="bookEvent('festival-flores')" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-600 transition-colors btn-spring">
+                                            <button onclick="bookEvent('festival-flores')"
+                                                class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-600 transition-colors btn-spring">
                                                 Reservar
                                             </button>
                                         </div>
@@ -470,16 +528,20 @@
                             <div class="md:flex">
                                 <div class="md:w-1/3">
                                     <div class="relative h-48 md:h-full">
-                                        <img src="https://images.pixabay.com/photo/2017/08/06/12/06/people-2591874_960_720.jpg" alt="Festival Gastronómico" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                        <img src="https://images.pixabay.com/photo/2017/08/06/12/06/people-2591874_960_720.jpg"
+                                            alt="Festival Gastronómico" class="w-full h-full object-cover"
+                                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
                                         <div class="absolute top-4 left-4">
-                                            <span class="bg-success text-white px-2 py-1 rounded-full text-xs font-medium">Gastronomía</span>
+                                            <span
+                                                class="bg-success text-white px-2 py-1 rounded-full text-xs font-medium">Gastronomía</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="md:w-2/3 p-6">
                                     <div class="flex items-start justify-between mb-2">
                                         <div>
-                                            <h4 class="font-serif font-semibold text-xl text-primary mb-1">Festival Gastronómico Paisa</h4>
+                                            <h4 class="font-serif font-semibold text-xl text-primary mb-1">Festival
+                                                Gastronómico Paisa</h4>
                                             <div class="flex items-center text-sm text-text-secondary mb-2">
                                                 <i class="fas fa-calendar mr-2"></i>
                                                 <span>15 Septiembre 2025</span>
@@ -491,15 +553,17 @@
                                                 <span>Parque de los Pies Descalzos, Medellín</span>
                                             </div>
                                         </div>
-                                        <button onclick="toggleFavorite(this)" class="p-2 rounded-full hover:bg-primary-50 transition-colors">
+                                        <button onclick="toggleFavorite(this)"
+                                            class="p-2 rounded-full hover:bg-primary-50 transition-colors">
                                             <i class="far fa-heart text-text-secondary"></i>
                                         </button>
                                     </div>
-                                    
+
                                     <p class="text-text-secondary text-sm mb-4">
-                                        Degusta los sabores auténticos de Antioquia con más de 50 restaurantes locales, chefs reconocidos y productos artesanales de la región.
+                                        Degusta los sabores auténticos de Antioquia con más de 50 restaurantes locales,
+                                        chefs reconocidos y productos artesanales de la región.
                                     </p>
-                                    
+
                                     <div class="flex items-center justify-between mb-4">
                                         <div class="flex items-center space-x-4">
                                             <div class="flex items-center text-sm text-text-secondary">
@@ -526,17 +590,19 @@
                                             <span class="text-sm text-text-secondary">(4.6)</span>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center">
                                             <span class="text-xl font-bold text-primary">$25.000</span>
                                             <span class="text-sm text-text-secondary ml-2">por persona</span>
                                         </div>
                                         <div class="flex space-x-2">
-                                            <button onclick="openEventDetail('festival-gastronomico')" class="px-4 py-2 border border-primary text-primary rounded-lg hover:bg-primary-50 transition-colors">
+                                            <button onclick="openEventDetail('festival-gastronomico')"
+                                                class="px-4 py-2 border border-primary text-primary rounded-lg hover:bg-primary-50 transition-colors">
                                                 Ver Detalles
                                             </button>
-                                            <button onclick="bookEvent('festival-gastronomico')" class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-600 transition-colors btn-spring">
+                                            <button onclick="bookEvent('festival-gastronomico')"
+                                                class="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-600 transition-colors btn-spring">
                                                 Reservar
                                             </button>
                                         </div>
@@ -550,16 +616,20 @@
                             <div class="md:flex">
                                 <div class="md:w-1/3">
                                     <div class="relative h-48 md:h-full">
-                                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3" alt="Feria Artesanal" class="w-full h-full object-cover" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                        <img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3"
+                                            alt="Feria Artesanal" class="w-full h-full object-cover"
+                                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
                                         <div class="absolute top-4 left-4">
-                                            <span class="bg-warning text-white px-2 py-1 rounded-full text-xs font-medium">Artesanal</span>
+                                            <span
+                                                class="bg-warning text-white px-2 py-1 rounded-full text-xs font-medium">Artesanal</span>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="md:w-2/3 p-6">
                                     <div class="flex items-start justify-between mb-2">
                                         <div>
-                                            <h4 class="font-serif font-semibold text-xl text-primary mb-1">Feria de Artesanías de Jardín</h4>
+                                            <h4 class="font-serif font-semibold text-xl text-primary mb-1">Feria de
+                                                Artesanías de Jardín</h4>
                                             <div class="flex items-center text-sm text-text-secondary mb-2">
                                                 <i class="fas fa-calendar mr-2"></i>
                                                 <span>25-27 Septiembre 2025</span>
@@ -571,15 +641,17 @@
                                                 <span>Plaza Principal, Jardín, Antioquia</span>
                                             </div>
                                         </div>
-                                        <button onclick="toggleFavorite(this)" class="p-2 rounded-full hover:bg-primary-50 transition-colors">
+                                        <button onclick="toggleFavorite(this)"
+                                            class="p-2 rounded-full hover:bg-primary-50 transition-colors">
                                             <i class="far fa-heart text-text-secondary"></i>
                                         </button>
                                     </div>
-                                    
+
                                     <p class="text-text-secondary text-sm mb-4">
-                                        Descubre el talento de los artesanos locales con productos únicos en cerámica, textiles, madera y joyería tradicional antioqueña.
+                                        Descubre el talento de los artesanos locales con productos únicos en cerámica,
+                                        textiles, madera y joyería tradicional antioqueña.
                                     </p>
-                                    
+
                                     <div class="flex items-center justify-between mb-4">
                                         <div class="flex items-center space-x-4">
                                             <div class="flex items-center text-sm text-text-secondary">
@@ -606,17 +678,19 @@
                                             <span class="text-sm text-text-secondary">(4.8)</span>
                                         </div>
                                     </div>
-                                    
+
                                     <div class="flex items-center justify-between">
                                         <div class="flex items-center">
                                             <span class="text-xl font-bold text-success">Gratis</span>
                                             <span class="text-sm text-text-secondary ml-2">Entrada libre</span>
                                         </div>
                                         <div class="flex space-x-2">
-                                            <button onclick="openEventDetail('feria-artesanal')" class="px-4 py-2 border border-primary text-primary rounded-lg hover:bg-primary-50 transition-colors">
+                                            <button onclick="openEventDetail('feria-artesanal')"
+                                                class="px-4 py-2 border border-primary text-primary rounded-lg hover:bg-primary-50 transition-colors">
                                                 Ver Detalles
                                             </button>
-                                            <button onclick="saveEvent('feria-artesanal')" class="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-secondary-600 transition-colors btn-spring">
+                                            <button onclick="saveEvent('feria-artesanal')"
+                                                class="px-4 py-2 bg-secondary text-white rounded-lg hover:bg-secondary-600 transition-colors btn-spring">
                                                 Guardar
                                             </button>
                                         </div>
@@ -628,7 +702,8 @@
 
                     <!-- Load More Button -->
                     <div class="text-center mt-8">
-                        <button onclick="loadMoreEvents()" class="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary-50 transition-colors">
+                        <button onclick="loadMoreEvents()"
+                            class="px-6 py-3 border border-primary text-primary rounded-lg hover:bg-primary-50 transition-colors">
                             <i class="fas fa-plus mr-2"></i>
                             Cargar Más Eventos
                         </button>
@@ -645,33 +720,37 @@
                 <div>
                     <div class="flex items-center mb-4">
                         <svg class="h-8 w-8 text-accent" viewBox="0 0 32 32" fill="currentColor">
-                            <path d="M16 2L3 7v10c0 8.5 5.5 16.5 13 18 7.5-1.5 13-9.5 13-18V7L16 2z"/>
-                            <circle cx="16" cy="14" r="4" fill="white"/>
-                            <path d="M12 20h8v2h-8z" fill="white"/>
+                            <path d="M16 2L3 7v10c0 8.5 5.5 16.5 13 18 7.5-1.5 13-9.5 13-18V7L16 2z" />
+                            <circle cx="16" cy="14" r="4" fill="white" />
+                            <path d="M12 20h8v2h-8z" fill="white" />
                         </svg>
                         <span class="ml-2 text-xl font-serif font-bold">AntioqAPP</span>
                     </div>
                     <p class="text-primary-200 text-sm">Descubre la auténtica cultura de Antioquia</p>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold mb-3">Explorar</h4>
                     <ul class="space-y-2 text-sm text-primary-200">
-                        <li><a href="tourism_routes.html" class="hover:text-white transition-colors">Rutas Turísticas</a></li>
+                        <li><a href="tourism_routes.html" class="hover:text-white transition-colors">Rutas
+                                Turísticas</a></li>
                         <li><a href="events_calendar.html" class="hover:text-white transition-colors">Eventos</a></li>
-                        <li><a href="business_directory.html" class="hover:text-white transition-colors">Negocios</a></li>
+                        <li><a href="business_directory.html" class="hover:text-white transition-colors">Negocios</a>
+                        </li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold mb-3">Cuenta</h4>
                     <ul class="space-y-2 text-sm text-primary-200">
                         <li><a href="user_login.html" class="hover:text-white transition-colors">Iniciar Sesión</a></li>
-                        <li><a href="user_registration.html" class="hover:text-white transition-colors">Registrarse</a></li>
-                        <li><a href="booking_management.html" class="hover:text-white transition-colors">Mis Reservas</a></li>
+                        <li><a href="user_registration.html" class="hover:text-white transition-colors">Registrarse</a>
+                        </li>
+                        <li><a href="booking_management.html" class="hover:text-white transition-colors">Mis
+                                Reservas</a></li>
                     </ul>
                 </div>
-                
+
                 <div>
                     <h4 class="font-semibold mb-3">Síguenos</h4>
                     <div class="flex space-x-3">
@@ -687,7 +766,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="border-t border-primary-700 mt-8 pt-8 text-center text-sm text-primary-200">
                 <p>&copy; 2025 AntioqAPP. Todos los derechos reservados.</p>
             </div>
@@ -695,7 +774,8 @@
     </footer>
 
     <!-- Event Detail Modal -->
-    <div id="eventDetailModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+    <div id="eventDetailModal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
         <div class="bg-surface rounded-xl max-w-4xl w-full max-h-96 overflow-y-auto">
             <div class="relative">
                 <!-- Modal Header -->
@@ -705,12 +785,14 @@
                         <i class="fas fa-times text-xl"></i>
                     </button>
                 </div>
-                
+
                 <!-- Modal Content -->
                 <div class="p-6">
                     <div class="grid md:grid-cols-2 gap-6">
                         <div>
-                            <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Festival de las Flores" class="w-full h-64 object-cover rounded-lg" onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                            <img src="https://images.pexels.com/photos/1190297/pexels-photo-1190297.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                alt="Festival de las Flores" class="w-full h-64 object-cover rounded-lg"
+                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
                         </div>
                         <div>
                             <div class="space-y-4">
@@ -735,7 +817,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div>
                                     <h4 class="font-semibold text-primary mb-2">Actividades Incluidas</h4>
                                     <ul class="text-sm text-text-secondary space-y-1">
@@ -749,7 +831,7 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="mt-6 pt-6 border-t border-gray-200">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center space-x-4">
@@ -758,11 +840,13 @@
                                 <span class="bg-success-50 text-success px-2 py-1 rounded text-sm">Descuento 19%</span>
                             </div>
                             <div class="flex space-x-3">
-                                <button onclick="shareEvent()" class="px-4 py-2 border border-gray-300 text-text-secondary rounded-lg hover:bg-gray-50 transition-colors">
+                                <button onclick="shareEvent()"
+                                    class="px-4 py-2 border border-gray-300 text-text-secondary rounded-lg hover:bg-gray-50 transition-colors">
                                     <i class="fas fa-share mr-2"></i>
                                     Compartir
                                 </button>
-                                <button onclick="bookEvent('festival-flores')" class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-600 transition-colors btn-spring">
+                                <button onclick="bookEvent('festival-flores')"
+                                    class="px-6 py-2 bg-primary text-white rounded-lg hover:bg-primary-600 transition-colors btn-spring">
                                     Reservar Ahora
                                 </button>
                             </div>
@@ -772,135 +856,9 @@
             </div>
         </div>
     </div>
-
-    <script>
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-        }
-
-        // Featured carousel
-        let currentFeatured = 0;
-        const featuredItems = 3;
-
-        function nextFeatured() {
-            currentFeatured = (currentFeatured + 1) % featuredItems;
-            updateFeaturedCarousel();
-        }
-
-        function prevFeatured() {
-            currentFeatured = (currentFeatured - 1 + featuredItems) % featuredItems;
-            updateFeaturedCarousel();
-        }
-
-        function updateFeaturedCarousel() {
-            const carousel = document.getElementById('featuredCarousel');
-            const translateX = -currentFeatured * (100 / featuredItems);
-            carousel.style.transform = `translateX(${translateX}%)`;
-        }
-
-        // Calendar navigation
-        function nextMonth() {
-            // Simulate month navigation
-            console.log('Next month');
-        }
-
-        function prevMonth() {
-            // Simulate month navigation
-            console.log('Previous month');
-        }
-
-        // Event interactions
-        function toggleFavorite(button) {
-            const icon = button.querySelector('i');
-            if (icon.classList.contains('far')) {
-                icon.classList.remove('far');
-                icon.classList.add('fas');
-                icon.classList.add('text-accent');
-            } else {
-                icon.classList.remove('fas');
-                icon.classList.add('far');
-                icon.classList.remove('text-accent');
-            }
-        }
-
-        function openEventDetail(eventId) {
-            document.getElementById('eventDetailModal').classList.remove('hidden');
-        }
-
-        function closeEventDetail() {
-            document.getElementById('eventDetailModal').classList.add('hidden');
-        }
-
-        function bookEvent(eventId) {
-            alert(`Redirigiendo a la reserva del evento: ${eventId}`);
-            window.location.href = 'booking_management.html';
-        }
-
-        function saveEvent(eventId) {
-            alert(`Evento ${eventId} guardado en tu lista de favoritos`);
-        }
-
-        function shareEvent() {
-            if (navigator.share) {
-                navigator.share({
-                    title: 'Festival de las Flores - AntioqAPP',
-                    text: 'Descubre este increíble evento en Antioquia',
-                    url: window.location.href
-                });
-            } else {
-                // Fallback for browsers that don't support Web Share API
-                navigator.clipboard.writeText(window.location.href);
-                alert('Enlace copiado al portapapeles');
-            }
-        }
-
-        function loadMoreEvents() {
-            // Simulate loading more events
-            alert('Cargando más eventos...');
-        }
-
-        function resetFilters() {
-            // Reset all filter inputs
-            document.getElementById('eventTypeFilter').value = '';
-            document.getElementById('locationFilter').value = '';
-            document.getElementById('dateFilter').value = '';
-            document.getElementById('priceFilter').value = '';
-            document.getElementById('familyFriendly').checked = false;
-            document.getElementById('accessible').checked = false;
-            document.getElementById('outdoor').checked = false;
-        }
-
-        // Close modal when clicking outside
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('bg-black')) {
-                e.target.classList.add('hidden');
-            }
-        });
-
-        // Filter functionality
-        document.addEventListener('DOMContentLoaded', function() {
-            const filters = ['eventTypeFilter', 'locationFilter', 'dateFilter', 'priceFilter'];
-            
-            filters.forEach(filterId => {
-                document.getElementById(filterId).addEventListener('change', function() {
-                    // Simulate filtering
-                    console.log(`Filter ${filterId} changed to: ${this.value}`);
-                });
-            });
-
-            // Checkbox filters
-            ['familyFriendly', 'accessible', 'outdoor'].forEach(checkboxId => {
-                document.getElementById(checkboxId).addEventListener('change', function() {
-                    console.log(`${checkboxId} filter: ${this.checked}`);
-                });
-            });
-        });
-
-        // Auto-advance featured carousel
-        setInterval(nextFeatured, 5000);
-    </script>
-<script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/events_calendar.js"></script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
 </body>
+
 </html>
