@@ -433,7 +433,9 @@
 
                     <div class="space-y-6" id="eventsList">
                         <!-- Event Card 1 -->
-                        <div class="bg-surface rounded-xl shadow-warm overflow-hidden card-elevation">
+                        <div class="bg-surface rounded-xl shadow-warm overflow-hidden card-elevation"
+                            data-type="festival" data-location="medellin" data-date="2025-09-15" data-price="medium" data-family="true"
+                            data-accessible="true" data-outdoor="true">
                             <div class="md:flex">
                                 <div class="md:w-1/3">
                                     <div class="relative h-48 md:h-full">
@@ -524,7 +526,9 @@
                         </div>
 
                         <!-- Event Card 2 -->
-                        <div class="bg-surface rounded-xl shadow-warm overflow-hidden card-elevation">
+                        <div class="bg-surface rounded-xl shadow-warm overflow-hidden card-elevation"
+                            data-type="gastronomia" data-location="manizales" data-price="medium" data-family="true"
+                            data-accessible="true" data-outdoor="true">
                             <div class="md:flex">
                                 <div class="md:w-1/3">
                                     <div class="relative h-48 md:h-full">
@@ -550,7 +554,7 @@
                                             </div>
                                             <div class="flex items-center text-sm text-text-secondary mb-3">
                                                 <i class="fas fa-map-marker-alt mr-2"></i>
-                                                <span>Parque de los Pies Descalzos, Medellín</span>
+                                                <span>Manizales</span>
                                             </div>
                                         </div>
                                         <button onclick="toggleFavorite(this)"
@@ -612,7 +616,9 @@
                         </div>
 
                         <!-- Event Card 3 -->
-                        <div class="bg-surface rounded-xl shadow-warm overflow-hidden card-elevation">
+                        <div class="bg-surface rounded-xl shadow-warm overflow-hidden card-elevation"
+                            data-type="artesanal" data-location="jardin" data-price="medium" data-family="true"
+                            data-accessible="true" data-outdoor="true">
                             <div class="md:flex">
                                 <div class="md:w-1/3">
                                     <div class="relative h-48 md:h-full">
@@ -856,9 +862,21 @@
             </div>
         </div>
     </div>
+    <!-- Modal Detalle Evento -->
+    <div id="eventDetailModal"
+        class="hidden fixed inset-0 bg-black bg-opacity-60 flex items-center justify-center z-50">
+        <div class="bg-white rounded-xl shadow-lg max-w-lg w-full p-6 relative">
+            <button onclick="closeEventDetail()" class="absolute top-3 right-3 text-gray-500 hover:text-gray-700">
+                <i class="fas fa-times"></i>
+            </button>
+            <h3 class="text-xl font-semibold text-primary mb-4">Detalle del Evento</h3>
+            <p class="text-sm text-gray-600">Aquí se mostrarán los detalles completos del evento seleccionado.</p>
+        </div>
+    </div>
+
     <script src="/js/auth.js"></script>
     <script src="/js/events_calendar.js"></script>
-    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+    <!-- <script id="dhws-dataInjector" src="public/dhws-data-injector.js"></script> -->
 </body>
 
 </html>

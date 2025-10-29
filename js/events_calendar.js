@@ -1,11 +1,10 @@
-
-// Mobile menu toggle
+// =================== MENÚ MÓVIL ===================
 function toggleMobileMenu() {
     const menu = document.getElementById('mobileMenu');
     menu.classList.toggle('hidden');
 }
 
-// Featured carousel
+// =================== CARRUSEL DESTACADOS ===================
 let currentFeatured = 0;
 const featuredItems = 3;
 
@@ -22,40 +21,33 @@ function prevFeatured() {
 function updateFeaturedCarousel() {
     const carousel = document.getElementById('featuredCarousel');
     const translateX = -currentFeatured * (100 / featuredItems);
-    carousel.style.transform = `translateX(${translateX}%)`;
+    if (carousel) carousel.style.transform = `translateX(${translateX}%)`;
 }
 
-// Calendar navigation
-function nextMonth() {
-    // Simulate month navigation
-    console.log('Next month');
-}
+// =================== CALENDARIO ===================
+function nextMonth() { console.log('Next month'); }
+function prevMonth() { console.log('Previous month'); }
 
-function prevMonth() {
-    // Simulate month navigation
-    console.log('Previous month');
-}
-
-// Event interactions
+// =================== INTERACCIÓN DE EVENTOS ===================
 function toggleFavorite(button) {
     const icon = button.querySelector('i');
     if (icon.classList.contains('far')) {
         icon.classList.remove('far');
-        icon.classList.add('fas');
-        icon.classList.add('text-accent');
+        icon.classList.add('fas', 'text-accent');
     } else {
-        icon.classList.remove('fas');
+        icon.classList.remove('fas', 'text-accent');
         icon.classList.add('far');
-        icon.classList.remove('text-accent');
     }
 }
 
 function openEventDetail(eventId) {
-    document.getElementById('eventDetailModal').classList.remove('hidden');
+    const modal = document.getElementById('eventDetailModal');
+    if (modal) modal.classList.remove('hidden');
 }
 
 function closeEventDetail() {
-    document.getElementById('eventDetailModal').classList.add('hidden');
+    const modal = document.getElementById('eventDetailModal');
+    if (modal) modal.classList.add('hidden');
 }
 
 function bookEvent(eventId) {
@@ -75,19 +67,17 @@ function shareEvent() {
             url: window.location.href
         });
     } else {
-        // Fallback for browsers that don't support Web Share API
         navigator.clipboard.writeText(window.location.href);
         alert('Enlace copiado al portapapeles');
     }
 }
 
 function loadMoreEvents() {
-    // Simulate loading more events
     alert('Cargando más eventos...');
 }
 
+// =================== FILTROS ===================
 function resetFilters() {
-    // Reset all filter inputs
     document.getElementById('eventTypeFilter').value = '';
     document.getElementById('locationFilter').value = '';
     document.getElementById('dateFilter').value = '';
@@ -95,33 +85,85 @@ function resetFilters() {
     document.getElementById('familyFriendly').checked = false;
     document.getElementById('accessible').checked = false;
     document.getElementById('outdoor').checked = false;
+
+    aplicarFiltros();
 }
 
-// Close modal when clicking outside
+// =================== FUNCIONALIDAD FILTRADO REAL ===================
+function aplicarFiltros() {
+    const tipo = document.getElementById('eventTypeFilter').value;
+    const municipio = document.getElementById('locationFilter').value;
+    const fechaFiltro = document.getElementById('dateFilter').value;
+    const precio = document.getElementById('priceFilter').value;
+    const familiar = document.getElementById('familyFriendly').checked;
+    const accesible = document.getElementById('accessible').checked;
+    const aireLibre = document.getElementById('outdoor').checked;
+
+    const eventos = document.querySelectorAll('#eventsList > div');
+    const hoy = new Date();
+
+    eventos.forEach(evento => {
+        const eventDateStr = evento.dataset.date;
+        const eventDate = eventDateStr ? new Date(eventDateStr) : null;
+
+        const matchTipo = !tipo || evento.dataset.type === tipo;
+        const matchMunicipio = !municipio || evento.dataset.location === municipio;
+        const matchPrecio = !precio || evento.dataset.price === precio;
+        const matchFamiliar = !familiar || evento.dataset.family === "true";
+        const matchAccesible = !accesible || evento.dataset.accessible === "true";
+        const matchAireLibre = !aireLibre || evento.dataset.outdoor === "true";
+
+        let matchFecha = true; // por defecto, pasa
+
+        if (eventDate) {
+            const diffDays = (eventDate - hoy) / (1000 * 60 * 60 * 24);
+            switch (fechaFiltro) {
+                case "today":
+                    matchFecha = diffDays >= 0 && diffDays < 1;
+                    break;
+                case "week":
+                    matchFecha = diffDays >= 0 && diffDays <= 7;
+                    break;
+                case "month":
+                    matchFecha = diffDays >= 0 && diffDays <= 30;
+                    break;
+                case "quarter":
+                    matchFecha = diffDays >= 0 && diffDays <= 90;
+                    break;
+                default:
+                    matchFecha = true;
+            }
+        }
+
+        const visible = matchTipo && matchMunicipio && matchPrecio &&
+                        matchFamiliar && matchAccesible && matchAireLibre && matchFecha;
+
+        evento.style.display = visible ? '' : 'none';
+    });
+}
+
+
+// =================== ESCUCHAS DE EVENTOS ===================
+document.addEventListener('DOMContentLoaded', () => {
+    // Filtros select
+    ['eventTypeFilter', 'locationFilter', 'dateFilter', 'priceFilter'].forEach(id => {
+        document.getElementById(id).addEventListener('change', aplicarFiltros);
+    });
+
+    // Checkboxes
+    ['familyFriendly', 'accessible', 'outdoor'].forEach(id => {
+        document.getElementById(id).addEventListener('change', aplicarFiltros);
+    });
+
+    aplicarFiltros();
+});
+
+// =================== MODAL ===================
 document.addEventListener('click', function(e) {
     if (e.target.classList.contains('bg-black')) {
         e.target.classList.add('hidden');
     }
 });
 
-// Filter functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const filters = ['eventTypeFilter', 'locationFilter', 'dateFilter', 'priceFilter'];
-    
-    filters.forEach(filterId => {
-        document.getElementById(filterId).addEventListener('change', function() {
-            // Simulate filtering
-            console.log(`Filter ${filterId} changed to: ${this.value}`);
-        });
-    });
-
-    // Checkbox filters
-    ['familyFriendly', 'accessible', 'outdoor'].forEach(checkboxId => {
-        document.getElementById(checkboxId).addEventListener('change', function() {
-            console.log(`${checkboxId} filter: ${this.checked}`);
-        });
-    });
-});
-
-// Auto-advance featured carousel
+// =================== AUTO-CARRUSEL ===================
 setInterval(nextFeatured, 5000);
