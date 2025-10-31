@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registro de Usuario - AntioqAPP</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script type="module"
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fantioqapp6359back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-warm border-b border-subtle">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L3 7v10c0 8.5 5.5 16.5 13 18 7.5-1.5 13-9.5 13-18V7L16 2z" />
+                        <circle cx="16" cy="14" r="4" fill="white" />
+                        <path d="M12 20h8v2h-8z" fill="white" />
+                    </svg>
+                    <span class="ml-2 text-xl font-serif font-bold text-primary">AntioqAPP</span>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="tourism_routes.html"
+                        class="text-text-secondary hover:text-primary transition-colors">Rutas</a>
+                    <a href="events_calendar.html"
+                        class="text-text-secondary hover:text-primary transition-colors">Eventos</a>
+                    <a href="business_directory.html"
+                        class="text-text-secondary hover:text-primary transition-colors">Negocios</a>
+                    <a href="user_login.html"
+                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">Iniciar
+                        Sesión</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-text-secondary hover:text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 py-8 px-4 sm:px-6 lg:px-8">
+        <div class="max-w-md mx-auto">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-fluid-3xl font-serif font-bold text-primary mb-2">Únete a AntioqAPP</h1>
+                <p class="text-text-secondary">Descubre la auténtica cultura de Antioquia</p>
+            </div>
+
+            <!-- Social Registration Options -->
+            <div class="space-y-3 mb-6">
+                <button
+                    class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-gray-50 transition-colors">
+                    <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3"
+                        alt="Google" class="w-5 h-5 mr-3"
+                        onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                    <span class="text-text-primary font-medium">Continuar con Google</span>
+                </button>
+
+                <button
+                    class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-gray-50 transition-colors">
+                    <i class="fab fa-facebook-f text-blue-600 text-lg mr-3"></i>
+                    <span class="text-text-primary font-medium">Continuar con Facebook</span>
+                </button>
+            </div>
+
+            <!-- Divider -->
+            <div class="relative mb-6">
+                <div class="absolute inset-0 flex items-center">
+                    <div class="w-full border-t border-gray-300"></div>
+                </div>
+                <div class="relative flex justify-center text-sm">
+                    <span class="px-2 bg-background text-text-secondary">O regístrate con email</span>
+                </div>
+            </div>
+
+            <!-- Registration Form -->
+            <form class="space-y-6" id="registrationForm">
+                <!-- Full Name -->
+                <div>
+                    <label for="fullName" class="block text-sm font-medium text-text-primary mb-2">Nombre
+                        Completo</label>
+                    <input type="text" id="fullName" name="fullName" required
+                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                        placeholder="María González Rodríguez" />
+                    <div class="mt-1 text-sm text-error hidden" id="fullNameError">Por favor ingresa tu nombre completo
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <div>
+                    <label for="email" class="block text-sm font-medium text-text-primary mb-2">Correo
+                        Electrónico</label>
+                    <input type="email" id="email" name="email" required
+                        class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                        placeholder="maria.gonzalez@email.com" />
+                    <div class="mt-1 text-sm text-error hidden" id="emailError">Por favor ingresa un email válido</div>
+                    <div class="mt-1 text-sm text-success hidden" id="emailSuccess">
+                        <i class="fas fa-check mr-1"></i>Email válido
+                    </div>
+                </div>
+
+                <!-- Password -->
+                <div>
+                    <label for="password" class="block text-sm font-medium text-text-primary mb-2">Contraseña</label>
+                    <div class="relative">
+                        <input type="password" id="password" name="password" required
+                            class="w-full px-3 py-3 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                            placeholder="Colombia2025!" />
+                        <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                            onclick="togglePassword('password')">
+                            <i class="fas fa-eye text-gray-400" id="passwordToggle"></i>
+                        </button>
+                    </div>
+                    <!-- Password Strength Indicator -->
+                    <div class="mt-2">
+                        <div class="flex space-x-1">
+                            <div class="h-1 flex-1 bg-gray-200 rounded" id="strength1"></div>
+                            <div class="h-1 flex-1 bg-gray-200 rounded" id="strength2"></div>
+                            <div class="h-1 flex-1 bg-gray-200 rounded" id="strength3"></div>
+                            <div class="h-1 flex-1 bg-gray-200 rounded" id="strength4"></div>
+                        </div>
+                        <p class="text-xs text-text-secondary mt-1" id="strengthText">Mínimo 8 caracteres</p>
+                    </div>
+                </div>
+
+                <!-- Confirm Password -->
+                <div>
+                    <label for="confirmPassword" class="block text-sm font-medium text-text-primary mb-2">Confirmar
+                        Contraseña</label>
+                    <div class="relative">
+                        <input type="password" id="confirmPassword" name="confirmPassword" required
+                            class="w-full px-3 py-3 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                            placeholder="Confirma tu contraseña" />
+                        <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                            onclick="togglePassword('confirmPassword')">
+                            <i class="fas fa-eye text-gray-400" id="confirmPasswordToggle"></i>
+                        </button>
+                    </div>
+                    <div class="mt-1 text-sm text-error hidden" id="confirmPasswordError">Las contraseñas no coinciden
+                    </div>
+                    <div class="mt-1 text-sm text-success hidden" id="confirmPasswordSuccess">
+                        <i class="fas fa-check mr-1"></i>Las contraseñas coinciden
+                    </div>
+                </div>
+
+                <!-- Profile Type Selection -->
+                <div>
+                    <label class="block text-sm font-medium text-text-primary mb-3">Tipo de Perfil</label>
+                    <div class="space-y-3">
+                        <!-- Tourist -->
+                        <label
+                            class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-primary-50 transition-colors">
+                            <input type="radio" name="profileType" value="tourist"
+                                class="text-primary focus:ring-primary" />
+                            <div class="ml-3 flex items-center">
+                                <i class="fas fa-camera text-accent text-lg mr-3"></i>
+                                <div>
+                                    <div class="font-medium text-text-primary">Turista</div>
+                                    <div class="text-sm text-text-secondary">Descubre experiencias auténticas</div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Local -->
+                        <label
+                            class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-primary-50 transition-colors">
+                            <input type="radio" name="profileType" value="local"
+                                class="text-primary focus:ring-primary" />
+                            <div class="ml-3 flex items-center">
+                                <i class="fas fa-home text-secondary text-lg mr-3"></i>
+                                <div>
+                                    <div class="font-medium text-text-primary">Local</div>
+                                    <div class="text-sm text-text-secondary">Explora tu región</div>
+                                </div>
+                            </div>
+                        </label>
+
+                        <!-- Entrepreneur -->
+                        <label
+                            class="flex items-center p-3 border border-gray-300 rounded-lg cursor-pointer hover:bg-primary-50 transition-colors">
+                            <input type="radio" name="profileType" value="entrepreneur"
+                                class="text-primary focus:ring-primary" />
+                            <div class="ml-3 flex items-center">
+                                <i class="fas fa-briefcase text-primary text-lg mr-3"></i>
+                                <div>
+                                    <div class="font-medium text-text-primary">Emprendedor</div>
+                                    <div class="text-sm text-text-secondary">Promociona tu negocio</div>
+                                </div>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Terms and Privacy -->
+                <div class="space-y-3">
+                    <label class="flex items-start">
+                        <input type="checkbox" id="terms" name="terms" required
+                            class="mt-1 text-primary focus:ring-primary" />
+                        <span class="ml-2 text-sm text-text-secondary">
+                            Acepto los <a href="javascript:void(0)" class="text-primary hover:underline"
+                                onclick="openModal('termsModal')">Términos de Servicio</a>
+                        </span>
+                    </label>
+
+                    <label class="flex items-start">
+                        <input type="checkbox" id="privacy" name="privacy" required
+                            class="mt-1 text-primary focus:ring-primary" />
+                        <span class="ml-2 text-sm text-text-secondary">
+                            Acepto la <a href="javascript:void(0)" class="text-primary hover:underline"
+                                onclick="openModal('privacyModal')">Política de Privacidad</a>
+                        </span>
+                    </label>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="submit"
+                    class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors btn-spring">
+                    Crear Cuenta
+                </button>
+            </form>
+
+            <!-- Login Link -->
+            <div class="text-center mt-6">
+                <p class="text-text-secondary">
+                    ¿Ya tienes cuenta?
+                    <a href="user_login.html" class="text-primary hover:underline font-medium">Inicia sesión</a>
+                </p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Profile Type Benefits Section -->
+    <section class="bg-primary-50 py-12 mt-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-fluid-2xl font-serif font-bold text-primary mb-2">¿Por qué unirse a AntioqAPP?</h2>
+                <p class="text-text-secondary">Cada perfil tiene beneficios únicos diseñados para ti</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Tourist Benefits -->
+                <div class="bg-surface rounded-xl p-6 card-elevation">
+                    <div class="text-center mb-4">
+                        <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-camera text-accent text-xl"></i>
+                        </div>
+                        <h3 class="font-serif font-semibold text-lg text-primary">Para Turistas</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm text-text-secondary">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-success mr-2"></i>
+                            Rutas personalizadas
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-success mr-2"></i>
+                            Experiencias auténticas
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-success mr-2"></i>
+                            Reservas fáciles
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-success mr-2"></i>
+                            Guías locales
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Local Benefits -->
+                <div class="bg-surface rounded-xl p-6 card-elevation">
+                    <div class="text-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-home text-secondary text-xl"></i>
+                        </div>
+                        <h3 class="font-serif font-semibold text-lg text-primary">Para Locales</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm text-text-secondary">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-success mr-2"></i>
+                            Descubre tu región
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-success mr-2"></i>
+                            Eventos exclusivos
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-success mr-2"></i>
+                            Comunidad activa
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-success mr-2"></i>
+                            Descuentos especiales
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Entrepreneur Benefits -->
+                <div class="bg-surface rounded-xl p-6 card-elevation">
+                    <div class="text-center mb-4">
+                        <div
+                            class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-3">
+                            <i class="fas fa-briefcase text-primary text-xl"></i>
+                        </div>
+                        <h3 class="font-serif font-semibold text-lg text-primary">Para Emprendedores</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm text-text-secondary">
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-success mr-2"></i>
+                            Promociona tu negocio
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-success mr-2"></i>
+                            Gestión de reservas
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-success mr-2"></i>
+                            Analytics detallados
+                        </li>
+                        <li class="flex items-center">
+                            <i class="fas fa-check text-success mr-2"></i>
+                            Red de contactos
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-800 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-accent" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L3 7v10c0 8.5 5.5 16.5 13 18 7.5-1.5 13-9.5 13-18V7L16 2z" />
+                            <circle cx="16" cy="14" r="4" fill="white" />
+                            <path d="M12 20h8v2h-8z" fill="white" />
+                        </svg>
+                        <span class="ml-2 text-xl font-serif font-bold">AntioqAPP</span>
+                    </div>
+                    <p class="text-primary-200 text-sm">Descubre la auténtica cultura de Antioquia</p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-3">Explorar</h4>
+                    <ul class="space-y-2 text-sm text-primary-200">
+                        <li><a href="tourism_routes.html" class="hover:text-white transition-colors">Rutas
+                                Turísticas</a></li>
+                        <li><a href="events_calendar.html" class="hover:text-white transition-colors">Eventos</a></li>
+                        <li><a href="business_directory.html" class="hover:text-white transition-colors">Negocios</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-3">Cuenta</h4>
+                    <ul class="space-y-2 text-sm text-primary-200">
+                        <li><a href="user_login.html" class="hover:text-white transition-colors">Iniciar Sesión</a></li>
+                        <li><a href="user_registration.html" class="hover:text-white transition-colors">Registrarse</a>
+                        </li>
+                        <li><a href="booking_management.html" class="hover:text-white transition-colors">Mis
+                                Reservas</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-3">Síguenos</h4>
+                    <div class="flex space-x-3">
+                        <a href="javascript:void(0)" class="text-primary-200 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="text-primary-200 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="text-primary-200 hover:text-white transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-primary-700 mt-8 pt-8 text-center text-sm text-primary-200">
+                <p>&copy; 2025 AntioqAPP. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Terms Modal -->
+    <div id="termsModal" class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-surface rounded-xl max-w-2xl w-full max-h-96 overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-serif font-bold text-primary">Términos de Servicio</h3>
+                    <button onclick="closeModal('termsModal')" class="text-text-secondary hover:text-primary">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="text-text-secondary space-y-4 text-sm">
+                    <p>Al usar AntioqAPP, aceptas cumplir con estos términos de servicio.</p>
+                    <p>1. <strong>Uso de la plataforma:</strong> Debes usar la plataforma de manera responsable y
+                        respetuosa.</p>
+                    <p>2. <strong>Contenido:</strong> Eres responsable del contenido que publiques en la plataforma.</p>
+                    <p>3. <strong>Privacidad:</strong> Respetamos tu privacidad según nuestra política de privacidad.
+                    </p>
+                    <p>4. <strong>Modificaciones:</strong> Nos reservamos el derecho de modificar estos términos.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div id="privacyModal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-surface rounded-xl max-w-2xl w-full max-h-96 overflow-y-auto">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-serif font-bold text-primary">Política de Privacidad</h3>
+                    <button onclick="closeModal('privacyModal')" class="text-text-secondary hover:text-primary">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+                <div class="text-text-secondary space-y-4 text-sm">
+                    <p>Tu privacidad es importante para nosotros. Esta política explica cómo recopilamos y usamos tu
+                        información.</p>
+                    <p>1. <strong>Información recopilada:</strong> Recopilamos información que nos proporcionas
+                        directamente.</p>
+                    <p>2. <strong>Uso de la información:</strong> Usamos tu información para mejorar nuestros servicios.
+                    </p>
+                    <p>3. <strong>Compartir información:</strong> No vendemos tu información personal a terceros.</p>
+                    <p>4. <strong>Seguridad:</strong> Implementamos medidas de seguridad para proteger tu información.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/auth.js"></script>
+    <script src="/js/registro.js"></script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+
+</html>
