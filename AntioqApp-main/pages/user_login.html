@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Iniciar Sesión - AntioqAPP</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script type="module"
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fantioqapp6359back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-warm border-b border-subtle">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L3 7v10c0 8.5 5.5 16.5 13 18 7.5-1.5 13-9.5 13-18V7L16 2z" />
+                        <circle cx="16" cy="14" r="4" fill="white" />
+                        <path d="M12 20h8v2h-8z" fill="white" />
+                    </svg>
+                    <span class="ml-2 text-xl font-serif font-bold text-primary">AntioqAPP</span>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="tourism_routes.html"
+                        class="text-text-secondary hover:text-primary transition-colors">Rutas</a>
+                    <a href="events_calendar.html"
+                        class="text-text-secondary hover:text-primary transition-colors">Eventos</a>
+                    <a href="business_directory.html"
+                        class="text-text-secondary hover:text-primary transition-colors">Negocios</a>
+                    <a href="user_registration.html"
+                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">Registrarse</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-text-secondary hover:text-primary">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="flex-1 py-8 px-4 sm:px-6 lg:px-8 relative">
+        <!-- Background Image -->
+        <div class="absolute inset-0 z-0">
+            <img src="https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                alt="Antioquia Cultural Heritage" class="w-full h-full object-cover opacity-10"
+                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+        </div>
+
+        <div class="max-w-md mx-auto relative z-10">
+            <!-- Header -->
+            <div class="text-center mb-8">
+                <h1 class="text-fluid-3xl font-serif font-bold text-primary mb-2">Bienvenido de vuelta</h1>
+                <p class="text-text-secondary">Continúa explorando la auténtica cultura de Antioquia</p>
+            </div>
+
+            <!-- Login Form Card -->
+            <div class="bg-surface rounded-xl p-6 card-elevation">
+                <!-- Social Login Options -->
+                <div class="space-y-3 mb-6">
+                    <button
+                        class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-gray-50 transition-colors btn-spring">
+                        <img src="https://images.pixabay.com/photo/2015/05/26/09/37/paypal-784404_1280.png" alt="Google"
+                            class="w-5 h-5 mr-3"
+                            onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                        <span class="text-text-primary font-medium">Continuar con Google</span>
+                    </button>
+
+                    <button
+                        class="w-full flex items-center justify-center px-4 py-3 border border-gray-300 rounded-lg bg-white hover:bg-gray-50 transition-colors btn-spring">
+                        <i class="fab fa-facebook-f text-blue-600 text-lg mr-3"></i>
+                        <span class="text-text-primary font-medium">Continuar con Facebook</span>
+                    </button>
+                </div>
+
+                <!-- Divider -->
+                <div class="relative mb-6">
+                    <div class="absolute inset-0 flex items-center">
+                        <div class="w-full border-t border-gray-300"></div>
+                    </div>
+                    <div class="relative flex justify-center text-sm">
+                        <span class="px-2 bg-surface text-text-secondary">O inicia sesión con email</span>
+                    </div>
+                </div>
+
+                <!-- Login Form -->
+                <form class="space-y-6" id="loginForm">
+                    <!-- Email -->
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-text-primary mb-2">Correo
+                            Electrónico</label>
+                        <input type="email" id="email" name="email" required
+                            class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                            placeholder="maria.gonzalez@email.com" />
+                        <div class="mt-1 text-sm text-error hidden" id="emailError">Por favor ingresa un email válido
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label for="password"
+                            class="block text-sm font-medium text-text-primary mb-2">Contraseña</label>
+                        <div class="relative">
+                            <input type="password" id="password" name="password" required
+                                class="w-full px-3 py-3 pr-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                                placeholder="Tu contraseña" />
+                            <button type="button" class="absolute inset-y-0 right-0 pr-3 flex items-center"
+                                onclick="togglePassword()">
+                                <i class="fas fa-eye text-gray-400" id="passwordToggle"></i>
+                            </button>
+                        </div>
+                        <div class="mt-1 text-sm text-error hidden" id="passwordError">La contraseña es requerida</div>
+                    </div>
+
+                    <!-- Remember Me & Forgot Password -->
+                    <div class="flex items-center justify-between">
+                        <label class="flex items-center">
+                            <input type="checkbox" id="rememberMe" name="rememberMe"
+                                class="text-primary focus:ring-primary rounded" />
+                            <span class="ml-2 text-sm text-text-secondary">Recordarme</span>
+                        </label>
+                        <button type="button" class="text-sm text-primary hover:underline"
+                            onclick="openForgotPasswordModal()">
+                            ¿Olvidaste tu contraseña?
+                        </button>
+                    </div>
+
+                    <!-- Login Button -->
+                    <button type="submit"
+                        class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 focus:ring-2 focus:ring-primary focus:ring-offset-2 transition-colors btn-spring"
+                        id="loginButton">
+                        <span id="loginButtonText">Iniciar Sesión</span>
+                        <i class="fas fa-spinner fa-spin ml-2 hidden" id="loginSpinner"></i>
+                    </button>
+
+                    <!-- Error Message -->
+                    <div class="text-center text-sm text-error hidden" id="loginError">
+                        <i class="fas fa-exclamation-circle mr-1"></i>
+                        <span id="loginErrorText">Credenciales incorrectas. Por favor verifica tu email y
+                            contraseña.</span>
+                    </div>
+
+                    <!-- Success Message -->
+                    <div class="text-center text-sm text-success hidden" id="loginSuccess">
+                        <i class="fas fa-check-circle mr-1"></i>
+                        <span>¡Inicio de sesión exitoso! Redirigiendo...</span>
+                    </div>
+                </form>
+
+                <!-- Create Account Link -->
+                <div class="text-center mt-6 pt-6 border-t border-gray-200">
+                    <p class="text-text-secondary mb-3">
+                        ¿Nuevo en AntioqAPP?
+                    </p>
+                    <a href="user_registration.html"
+                        class="inline-flex items-center text-primary hover:underline font-medium">
+                        <i class="fas fa-user-plus mr-2"></i>
+                        Crear cuenta gratuita
+                    </a>
+                    <p class="text-xs text-text-secondary mt-2">
+                        Descubre experiencias auténticas de Antioquia
+                    </p>
+                </div>
+            </div>
+
+            <!-- Demo Credentials Info -->
+            <div class="mt-6 bg-primary-50 rounded-lg p-4 border border-primary-200">
+                <h3 class="text-sm font-medium text-primary mb-2">
+                    <i class="fas fa-info-circle mr-1"></i>
+                    Credenciales de Prueba
+                </h3>
+                <div class="space-y-2 text-xs text-text-secondary">
+                    <div>
+                        <strong>Turista:</strong> maria.gonzalez@email.com / Colombia2025!
+                    </div>
+                    <div>
+                        <strong>Emprendedor:</strong> carlos.entrepreneur@email.com / Antioquia123!
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Benefits Section -->
+    <section class="bg-primary-50 py-12 mt-12">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-fluid-2xl font-serif font-bold text-primary mb-2">Tu aventura te espera</h2>
+                <p class="text-text-secondary">Inicia sesión y continúa explorando Antioquia</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Personalized Routes -->
+                <div class="bg-surface rounded-xl p-6 card-elevation text-center">
+                    <div class="w-12 h-12 bg-accent-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-route text-accent text-xl"></i>
+                    </div>
+                    <h3 class="font-serif font-semibold text-lg text-primary mb-2">Rutas Personalizadas</h3>
+                    <p class="text-sm text-text-secondary">Descubre itinerarios únicos basados en tus intereses y
+                        preferencias</p>
+                </div>
+
+                <!-- Exclusive Events -->
+                <div class="bg-surface rounded-xl p-6 card-elevation text-center">
+                    <div class="w-12 h-12 bg-secondary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-calendar-star text-secondary text-xl"></i>
+                    </div>
+                    <h3 class="font-serif font-semibold text-lg text-primary mb-2">Eventos Exclusivos</h3>
+                    <p class="text-sm text-text-secondary">Accede a festivales y eventos culturales únicos de la región
+                    </p>
+                </div>
+
+                <!-- Easy Bookings -->
+                <div class="bg-surface rounded-xl p-6 card-elevation text-center">
+                    <div class="w-12 h-12 bg-primary-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i class="fas fa-bookmark text-primary text-xl"></i>
+                    </div>
+                    <h3 class="font-serif font-semibold text-lg text-primary mb-2">Reservas Fáciles</h3>
+                    <p class="text-sm text-text-secondary">Gestiona todas tus reservas y experiencias desde un solo
+                        lugar</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary-800 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-accent" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L3 7v10c0 8.5 5.5 16.5 13 18 7.5-1.5 13-9.5 13-18V7L16 2z" />
+                            <circle cx="16" cy="14" r="4" fill="white" />
+                            <path d="M12 20h8v2h-8z" fill="white" />
+                        </svg>
+                        <span class="ml-2 text-xl font-serif font-bold">AntioqAPP</span>
+                    </div>
+                    <p class="text-primary-200 text-sm">Descubre la auténtica cultura de Antioquia</p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-3">Explorar</h4>
+                    <ul class="space-y-2 text-sm text-primary-200">
+                        <li><a href="tourism_routes.html" class="hover:text-white transition-colors">Rutas
+                                Turísticas</a></li>
+                        <li><a href="events_calendar.html" class="hover:text-white transition-colors">Eventos</a></li>
+                        <li><a href="business_directory.html" class="hover:text-white transition-colors">Negocios</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-3">Cuenta</h4>
+                    <ul class="space-y-2 text-sm text-primary-200">
+                        <li><a href="user_login.html" class="hover:text-white transition-colors">Iniciar Sesión</a></li>
+                        <li><a href="user_registration.html" class="hover:text-white transition-colors">Registrarse</a>
+                        </li>
+                        <li><a href="booking_management.html" class="hover:text-white transition-colors">Mis
+                                Reservas</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-3">Síguenos</h4>
+                    <div class="flex space-x-3">
+                        <a href="javascript:void(0)" class="text-primary-200 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="text-primary-200 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="text-primary-200 hover:text-white transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-primary-700 mt-8 pt-8 text-center text-sm text-primary-200">
+                <p>&copy; 2025 AntioqAPP. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Forgot Password Modal -->
+    <div id="forgotPasswordModal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-surface rounded-xl max-w-md w-full">
+            <div class="p-6">
+                <div class="flex justify-between items-center mb-4">
+                    <h3 class="text-xl font-serif font-bold text-primary">Recuperar Contraseña</h3>
+                    <button onclick="closeForgotPasswordModal()" class="text-text-secondary hover:text-primary">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <p class="text-text-secondary mb-6 text-sm">
+                    Ingresa tu correo electrónico y te enviaremos un enlace para restablecer tu contraseña.
+                </p>
+
+                <form id="forgotPasswordForm" class="space-y-4">
+                    <div>
+                        <label for="resetEmail" class="block text-sm font-medium text-text-primary mb-2">Correo
+                            Electrónico</label>
+                        <input type="email" id="resetEmail" name="resetEmail" required
+                            class="w-full px-3 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent transition-colors"
+                            placeholder="tu.email@ejemplo.com" />
+                        <div class="mt-1 text-sm text-error hidden" id="resetEmailError">Por favor ingresa un email
+                            válido</div>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-primary text-white py-3 px-4 rounded-lg font-medium hover:bg-primary-600 transition-colors btn-spring"
+                        id="resetButton">
+                        <span id="resetButtonText">Enviar Enlace de Recuperación</span>
+                        <i class="fas fa-spinner fa-spin ml-2 hidden" id="resetSpinner"></i>
+                    </button>
+
+                    <div class="text-center text-sm text-success hidden" id="resetSuccess">
+                        <i class="fas fa-check-circle mr-1"></i>
+                        <span>¡Enlace enviado! Revisa tu correo electrónico.</span>
+                    </div>
+                </form>
+
+                <div class="text-center mt-4">
+                    <button onclick="closeForgotPasswordModal()" class="text-sm text-primary hover:underline">
+                        Volver al inicio de sesión
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/js/auth.js"></script>
+    <script src="/js/login.js"></script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+
+</html>

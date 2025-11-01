@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Rutas Turísticas - AntioqAPP</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <script type="module"
+        src="https://static.rocket.new/rocket-web.js?_cfg=https%3A%2F%2Fantioqapp6359back.builtwithrocket.new&_be=https%3A%2F%2Fapplication.rocket.new&_v=0.1.8"></script>
+</head>
+
+<body class="bg-background min-h-screen">
+    <!-- Navigation Header -->
+    <nav class="bg-surface shadow-warm border-b border-subtle">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <svg class="h-8 w-8 text-primary" viewBox="0 0 32 32" fill="currentColor">
+                        <path d="M16 2L3 7v10c0 8.5 5.5 16.5 13 18 7.5-1.5 13-9.5 13-18V7L16 2z" />
+                        <circle cx="16" cy="14" r="4" fill="white" />
+                        <path d="M12 20h8v2h-8z" fill="white" />
+                    </svg>
+                    <span class="ml-2 text-xl font-serif font-bold text-primary">AntioqAPP</span>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="tourism_routes.html" class="text-primary font-medium border-b-2 border-primary">Rutas</a>
+                    <a href="events_calendar.html"
+                        class="text-text-secondary hover:text-primary transition-colors">Eventos</a>
+                    <a href="business_directory.html"
+                        class="text-text-secondary hover:text-primary transition-colors">Negocios</a>
+                    <a href="booking_management.html"
+                        class="text-text-secondary hover:text-primary transition-colors">Mis Reservas</a>
+                    <a href="user_login.html"
+                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">Iniciar
+                        Sesión</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button type="button" class="text-text-secondary hover:text-primary" onclick="toggleMobileMenu()">
+                        <i class="fas fa-bars text-xl"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile Menu -->
+            <div id="mobileMenu" class="md:hidden hidden border-t border-subtle mt-2 pt-2 pb-4">
+                <div class="flex flex-col space-y-3">
+                    <a href="tourism_routes.html" class="text-primary font-medium">Rutas</a>
+                    <a href="events_calendar.html" class="text-text-secondary">Eventos</a>
+                    <a href="business_directory.html" class="text-text-secondary">Negocios</a>
+                    <a href="booking_management.html" class="text-text-secondary">Mis Reservas</a>
+                    <a href="user_login.html" class="bg-primary text-white px-4 py-2 rounded-lg text-center">Iniciar
+                        Sesión</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="bg-gradient-to-r from-primary-600 to-secondary-500 text-white py-16">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <h1 class="text-fluid-4xl font-serif font-bold mb-4">Descubre Antioquia</h1>
+                <p class="text-fluid-lg text-primary-100 mb-8 max-w-2xl mx-auto">
+                    Explora rutas culturales auténticas diseñadas para conectarte con la verdadera esencia de nuestra
+                    región
+                </p>
+
+                <!-- Quick Search -->
+                <div class="max-w-2xl mx-auto bg-white rounded-xl p-4 shadow-warm-lg">
+                    <div class="flex flex-col md:flex-row gap-4">
+                        <div class="flex-1">
+                            <input type="text" placeholder="¿Qué experiencia buscas?"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-primary" />
+                        </div>
+                        <div class="flex-1">
+                            <select
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-text-primary">
+                                <option value>Tipo de ruta</option>
+                                <option value="cultural">Patrimonio Cultural</option>
+                                <option value="gastronomic">Gastronómica</option>
+                                <option value="artisan">Artesanal</option>
+                                <option value="nature">Naturaleza</option>
+                            </select>
+                        </div>
+                        <button
+                            class="bg-accent text-white px-6 py-3 rounded-lg hover:bg-accent-600 transition-colors btn-spring">
+                            <i class="fas fa-search mr-2"></i>Buscar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Routes Carousel -->
+    <section class="py-12 bg-primary-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-8">
+                <h2 class="text-fluid-3xl font-serif font-bold text-primary mb-2">Rutas Destacadas</h2>
+                <p class="text-text-secondary">Experiencias premium seleccionadas especialmente para ti</p>
+            </div>
+
+            <div class="relative">
+                <div class="overflow-hidden">
+                    <div class="flex transition-transform duration-500 ease-in-out" id="featuredCarousel">
+                        <!-- Featured Route 1 -->
+                        <div class="min-w-full md:min-w-0 md:w-1/3 px-3">
+                            <div class="bg-surface rounded-xl overflow-hidden card-elevation">
+                                <div class="relative">
+                                    <img src="https://images.pexels.com/photos/4109748/pexels-photo-4109748.jpeg"
+                                        alt="Ruta del Café" class="w-full h-64 object-cover"
+                                        onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                    <div class="absolute top-4 left-4">
+                                        <span
+                                            class="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">Premium</span>
+                                    </div>
+                                    <div class="absolute top-4 right-4">
+                                        <button
+                                            class="bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-colors">
+                                            <i class="far fa-heart text-primary"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h3 class="font-serif font-semibold text-lg text-primary">Ruta del Café
+                                            Tradicional</h3>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-warning text-sm"></i>
+                                            <span class="text-sm text-text-secondary ml-1">4.8</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-text-secondary text-sm mb-4">Descubre el proceso completo del café
+                                        desde la semilla hasta la taza en fincas tradicionales</p>
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="flex items-center space-x-4 text-sm text-text-secondary">
+                                            <span><i class="fas fa-clock mr-1"></i>8 horas</span>
+                                            <span><i class="fas fa-users mr-1"></i>2-12 personas</span>
+                                        </div>
+                                        <div class="text-primary font-semibold">$180.000 COP</div>
+                                    </div>
+                                    <button
+                                        class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-600 transition-colors btn-spring"
+                                        onclick="openRouteDetail('coffee-route')">
+                                        Ver Detalles
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Featured Route 2 -->
+                        <div class="min-w-full md:min-w-0 md:w-1/3 px-3">
+                            <div class="bg-surface rounded-xl overflow-hidden card-elevation">
+                                <div class="relative">
+                                    <img src="https://www.viajaporcolombia.com/images/galeria/6/santafe-7.jpg"
+                                        alt="Medellín Colonial" class="w-full h-64 object-cover"
+                                        onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                    <div class="absolute top-4 left-4">
+                                        <span
+                                            class="bg-secondary text-white px-3 py-1 rounded-full text-sm font-medium">Cultural</span>
+                                    </div>
+                                    <div class="absolute top-4 right-4">
+                                        <button
+                                            class="bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-colors">
+                                            <i class="far fa-heart text-primary"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h3 class="font-serif font-semibold text-lg text-primary">Medellín Colonial</h3>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-warning text-sm"></i>
+                                            <span class="text-sm text-text-secondary ml-1">4.6</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-text-secondary text-sm mb-4">Recorre el centro histórico y descubre
+                                        la arquitectura colonial de la ciudad</p>
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="flex items-center space-x-4 text-sm text-text-secondary">
+                                            <span><i class="fas fa-clock mr-1"></i>4 horas</span>
+                                            <span><i class="fas fa-users mr-1"></i>1-15 personas</span>
+                                        </div>
+                                        <div class="text-primary font-semibold">$85.000 COP</div>
+                                    </div>
+                                    <button
+                                        class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-600 transition-colors btn-spring"
+                                        onclick="openRouteDetail('colonial-route')">
+                                        Ver Detalles
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Featured Route 3 -->
+                        <div class="min-w-full md:min-w-0 md:w-1/3 px-3">
+                            <div class="bg-surface rounded-xl overflow-hidden card-elevation">
+                                <div class="relative">
+                                    <img src="https://i.ytimg.com/vi/G7GFDrKuPH4/maxresdefault.jpg"
+                                        alt="Artesanías Tradicionales" class="w-full h-64 object-cover"
+                                        onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                    <div class="absolute top-4 left-4">
+                                        <span
+                                            class="bg-accent text-white px-3 py-1 rounded-full text-sm font-medium">Artesanal</span>
+                                    </div>
+                                    <div class="absolute top-4 right-4">
+                                        <button
+                                            class="bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-colors">
+                                            <i class="fas fa-heart text-accent"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                <div class="p-6">
+                                    <div class="flex items-center justify-between mb-2">
+                                        <h3 class="font-serif font-semibold text-lg text-primary">Artesanías
+                                            Tradicionales</h3>
+                                        <div class="flex items-center">
+                                            <i class="fas fa-star text-warning text-sm"></i>
+                                            <span class="text-sm text-text-secondary ml-1">4.9</span>
+                                        </div>
+                                    </div>
+                                    <p class="text-text-secondary text-sm mb-4">Aprende técnicas ancestrales de cerámica
+                                        y tejido con maestros artesanos</p>
+                                    <div class="flex items-center justify-between mb-4">
+                                        <div class="flex items-center space-x-4 text-sm text-text-secondary">
+                                            <span><i class="fas fa-clock mr-1"></i>6 horas</span>
+                                            <span><i class="fas fa-users mr-1"></i>1-8 personas</span>
+                                        </div>
+                                        <div class="text-primary font-semibold">$120.000 COP</div>
+                                    </div>
+                                    <button
+                                        class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-600 transition-colors btn-spring"
+                                        onclick="openRouteDetail('artisan-route')">
+                                        Ver Detalles
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Carousel Controls -->
+                <button
+                    class="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-warm hover:shadow-warm-md transition-all"
+                    onclick="previousSlide()">
+                    <i class="fas fa-chevron-left text-primary"></i>
+                </button>
+                <button
+                    class="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white p-3 rounded-full shadow-warm hover:shadow-warm-md transition-all"
+                    onclick="nextSlide()">
+                    <i class="fas fa-chevron-right text-primary"></i>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col lg:flex-row gap-8">
+                <!-- Filters Sidebar -->
+                <aside class="lg:w-1/4">
+                    <div class="bg-surface rounded-xl p-6 card-elevation sticky top-4">
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="font-serif font-semibold text-lg text-primary">Filtros</h3>
+                            <button class="text-accent hover:text-accent-600 text-sm font-medium"
+                                onclick="clearFilters()">
+                                <i class="fas fa-undo mr-1"></i>Limpiar
+                            </button>
+                        </div>
+
+                        <!-- Route Type Filter -->
+                        <div class="mb-6">
+                            <h4 class="font-medium text-text-primary mb-3">Tipo de Ruta</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="text-primary focus:ring-primary rounded"
+                                        value="cultural" />
+                                    <span class="ml-2 text-sm text-text-secondary">Patrimonio Cultural</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="text-primary focus:ring-primary rounded"
+                                        value="gastronomic" />
+                                    <span class="ml-2 text-sm text-text-secondary">Gastronómica</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="text-primary focus:ring-primary rounded"
+                                        value="artisan" />
+                                    <span class="ml-2 text-sm text-text-secondary">Artesanal</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="text-primary focus:ring-primary rounded"
+                                        value="nature" />
+                                    <span class="ml-2 text-sm text-text-secondary">Naturaleza</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Duration Filter -->
+                        <div class="mb-6">
+                            <h4 class="font-medium text-text-primary mb-3">Duración</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="radio" name="duration" class="text-primary focus:ring-primary"
+                                        value="half-day" />
+                                    <span class="ml-2 text-sm text-text-secondary">Medio día (2-4 horas)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="duration" class="text-primary focus:ring-primary"
+                                        value="full-day" />
+                                    <span class="ml-2 text-sm text-text-secondary">Día completo (6-8 horas)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="duration" class="text-primary focus:ring-primary"
+                                        value="multi-day" />
+                                    <span class="ml-2 text-sm text-text-secondary">Varios días</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- Price Range -->
+                        <div class="mb-6">
+                            <h4 class="font-medium text-text-primary mb-3">Rango de Precio</h4>
+                            <div class="space-y-3">
+                                <div>
+                                    <input type="range" min="0" max="500000" value="250000"
+                                        class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer slider" />
+                                    <div class="flex justify-between text-xs text-text-secondary mt-1">
+                                        <span>$0</span>
+                                        <span id="priceValue">$250.000</span>
+                                        <span>$500.000+</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Group Size -->
+                        <div class="mb-6">
+                            <h4 class="font-medium text-text-primary mb-3">Tamaño del Grupo</h4>
+                            <select
+                                class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+                                <option value>Cualquier tamaño</option>
+                                <option value="1-4">1-4 personas</option>
+                                <option value="5-10">5-10 personas</option>
+                                <option value="11-20">11-20 personas</option>
+                                <option value="20+">Más de 20 personas</option>
+                            </select>
+                        </div>
+
+                        <!-- Accessibility -->
+                        <div class="mb-6">
+                            <h4 class="font-medium text-text-primary mb-3">Accesibilidad</h4>
+                            <div class="space-y-2">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="text-primary focus:ring-primary rounded" />
+                                    <span class="ml-2 text-sm text-text-secondary">Accesible en silla de ruedas</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="text-primary focus:ring-primary rounded" />
+                                    <span class="ml-2 text-sm text-text-secondary">Apto para niños</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="text-primary focus:ring-primary rounded" />
+                                    <span class="ml-2 text-sm text-text-secondary">Mascotas permitidas</span>
+                                </label>
+                            </div>
+                        </div>
+
+                        <button
+                            class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-600 transition-colors btn-spring">
+                            Aplicar Filtros
+                        </button>
+                    </div>
+                </aside>
+
+                <!-- Routes Grid -->
+                <div class="lg:w-3/4">
+                    <div class="flex items-center justify-between mb-6">
+                        <div>
+                            <h2 class="text-fluid-2xl font-serif font-bold text-primary">Todas las Rutas</h2>
+                            <p class="text-text-secondary">Encontramos 24 rutas disponibles</p>
+                        </div>
+                        <div class="flex items-center space-x-4">
+                            <select
+                                class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent text-sm">
+                                <option value="recommended">Recomendadas</option>
+                                <option value="price-low">Precio: Menor a Mayor</option>
+                                <option value="price-high">Precio: Mayor a Menor</option>
+                                <option value="rating">Mejor Valoradas</option>
+                                <option value="duration">Duración</option>
+                            </select>
+                            <div class="flex border border-gray-300 rounded-lg overflow-hidden">
+                                <button class="px-3 py-2 bg-primary text-white" onclick="toggleView('grid')">
+                                    <i class="fas fa-th-large"></i>
+                                </button>
+                                <button class="px-3 py-2 hover:bg-gray-50" onclick="toggleView('list')">
+                                    <i class="fas fa-list"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Routes Grid -->
+                    <div class="grid md:grid-cols-2 xl:grid-cols-3 gap-6" id="routesGrid">
+                        <!-- Route Card 1 -->
+                        <div class="bg-surface rounded-xl overflow-hidden card-elevation">
+                            <div class="relative">
+                                <img src="https://www.semana.com/resizer/8dxMGe8kIGkATVAC1uJOgwcSbS0=/arc-anglerfish-arc2-prod-semana/public/V2AOKPLATJDX7AR3RN3B3TLFKQ.jpg"
+                                    alt="Guatapé y Piedra del Peñol" class="w-full h-48 object-cover"
+                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div class="absolute top-3 left-3">
+                                    <span
+                                        class="bg-success text-white px-2 py-1 rounded-full text-xs font-medium">Disponible</span>
+                                </div>
+                                <div class="absolute top-3 right-3">
+                                    <button
+                                        class="bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-colors">
+                                        <i class="far fa-heart text-primary"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h3 class="font-serif font-semibold text-primary">Guatapé y Piedra del Peñol</h3>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-warning text-sm"></i>
+                                        <span class="text-sm text-text-secondary ml-1">4.7</span>
+                                    </div>
+                                </div>
+                                <p class="text-text-secondary text-sm mb-3">Descubre el pueblo más colorido de Colombia
+                                    y sube a la famosa Piedra del Peñol</p>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center space-x-3 text-xs text-text-secondary">
+                                        <span><i class="fas fa-clock mr-1"></i>10 horas</span>
+                                        <span><i class="fas fa-users mr-1"></i>1-15</span>
+                                        <span><i class="fas fa-map-marker-alt mr-1"></i>Guatapé</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="text-primary font-semibold">$95.000 COP</div>
+                                    <button
+                                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring text-sm"
+                                        onclick="openRouteDetail('guatape-route')">
+                                        Reservar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Route Card 2 -->
+                        <div class="bg-surface rounded-xl overflow-hidden card-elevation">
+                            <div class="relative">
+                                <img src="https://jardindeaventura.com/wp-content/uploads/2020/05/generalidades-jardin-antioquia-2-570x184.jpg"
+                                    alt="Jardín Pueblo Patrimonio" class="w-full h-48 object-cover"
+                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div class="absolute top-3 left-3">
+                                    <span class="bg-warning text-white px-2 py-1 rounded-full text-xs font-medium">Pocas
+                                        plazas</span>
+                                </div>
+                                <div class="absolute top-3 right-3">
+                                    <button
+                                        class="bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-colors">
+                                        <i class="far fa-heart text-primary"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h3 class="font-serif font-semibold text-primary">Jardín Pueblo Patrimonio</h3>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-warning text-sm"></i>
+                                        <span class="text-sm text-text-secondary ml-1">4.5</span>
+                                    </div>
+                                </div>
+                                <p class="text-text-secondary text-sm mb-3">Explora este encantador pueblo patrimonio
+                                    con arquitectura colonial preservada</p>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center space-x-3 text-xs text-text-secondary">
+                                        <span><i class="fas fa-clock mr-1"></i>8 horas</span>
+                                        <span><i class="fas fa-users mr-1"></i>2-12</span>
+                                        <span><i class="fas fa-map-marker-alt mr-1"></i>Jardín</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="text-primary font-semibold">$110.000 COP</div>
+                                    <button
+                                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring text-sm"
+                                        onclick="openRouteDetail('jardin-route')">
+                                        Reservar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Route Card 3 -->
+                        <div class="bg-surface rounded-xl overflow-hidden card-elevation">
+                            <div class="relative">
+                                <img src="https://www.teleantioquia.co/wp-content/uploads/2024/08/portada-2.png"
+                                    alt="Ruta Gastronómica Paisa" class="w-full h-48 object-cover"
+                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div class="absolute top-3 left-3">
+                                    <span
+                                        class="bg-success text-white px-2 py-1 rounded-full text-xs font-medium">Disponible</span>
+                                </div>
+                                <div class="absolute top-3 right-3">
+                                    <button
+                                        class="bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-colors">
+                                        <i class="fas fa-heart text-accent"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h3 class="font-serif font-semibold text-primary">Ruta Gastronómica Paisa</h3>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-warning text-sm"></i>
+                                        <span class="text-sm text-text-secondary ml-1">4.9</span>
+                                    </div>
+                                </div>
+                                <p class="text-text-secondary text-sm mb-3">Degusta los sabores auténticos de la cocina
+                                    antioqueña en restaurantes tradicionales</p>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center space-x-3 text-xs text-text-secondary">
+                                        <span><i class="fas fa-clock mr-1"></i>5 horas</span>
+                                        <span><i class="fas fa-users mr-1"></i>1-8</span>
+                                        <span><i class="fas fa-map-marker-alt mr-1"></i>Medellín</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="text-primary font-semibold">$75.000 COP</div>
+                                    <button
+                                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring text-sm"
+                                        onclick="openRouteDetail('gastronomic-route')">
+                                        Reservar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Route Card 4 -->
+                        <div class="bg-surface rounded-xl overflow-hidden card-elevation">
+                            <div class="relative">
+                                <img src="https://turismounipolar.com/wp-content/uploads/2023/02/SantaFe-ppal.jpg"
+                                    alt="Santa Fe de Antioquia" class="w-full h-48 object-cover"
+                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div class="absolute top-3 left-3">
+                                    <span
+                                        class="bg-success text-white px-2 py-1 rounded-full text-xs font-medium">Disponible</span>
+                                </div>
+                                <div class="absolute top-3 right-3">
+                                    <button
+                                        class="bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-colors">
+                                        <i class="far fa-heart text-primary"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h3 class="font-serif font-semibold text-primary">Santa Fe de Antioquia</h3>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-warning text-sm"></i>
+                                        <span class="text-sm text-text-secondary ml-1">4.6</span>
+                                    </div>
+                                </div>
+                                <p class="text-text-secondary text-sm mb-3">Visita la primera capital de Antioquia y su
+                                    famoso Puente de Occidente</p>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center space-x-3 text-xs text-text-secondary">
+                                        <span><i class="fas fa-clock mr-1"></i>9 horas</span>
+                                        <span><i class="fas fa-users mr-1"></i>2-20</span>
+                                        <span><i class="fas fa-map-marker-alt mr-1"></i>Santa Fe</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="text-primary font-semibold">$90.000 COP</div>
+                                    <button
+                                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring text-sm"
+                                        onclick="openRouteDetail('santafe-route')">
+                                        Reservar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Route Card 5 -->
+                        <div class="bg-surface rounded-xl overflow-hidden card-elevation">
+                            <div class="relative">
+                                <img src="https://turismo.encolombia.com/wp-content/uploads/2024/08/Parque-principal-de-Rionegro.jpg"
+                                    alt="Rionegro Colonial" class="w-full h-48 object-cover"
+                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div class="absolute top-3 left-3">
+                                    <span
+                                        class="bg-success text-white px-2 py-1 rounded-full text-xs font-medium">Disponible</span>
+                                </div>
+                                <div class="absolute top-3 right-3">
+                                    <button
+                                        class="bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-colors">
+                                        <i class="far fa-heart text-primary"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h3 class="font-serif font-semibold text-primary">Rionegro Colonial</h3>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-warning text-sm"></i>
+                                        <span class="text-sm text-text-secondary ml-1">4.4</span>
+                                    </div>
+                                </div>
+                                <p class="text-text-secondary text-sm mb-3">Conoce la cuna de la independencia
+                                    antioqueña y su rica historia colonial</p>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center space-x-3 text-xs text-text-secondary">
+                                        <span><i class="fas fa-clock mr-1"></i>6 horas</span>
+                                        <span><i class="fas fa-users mr-1"></i>1-16</span>
+                                        <span><i class="fas fa-map-marker-alt mr-1"></i>Rionegro</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="text-primary font-semibold">$65.000 COP</div>
+                                    <button
+                                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring text-sm"
+                                        onclick="openRouteDetail('rionegro-route')">
+                                        Reservar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Route Card 6 -->
+                        <div class="bg-surface rounded-xl overflow-hidden card-elevation">
+                            <div class="relative">
+                                <img src="https://www.responsiblemines.org/wp-content/uploads/2018/09/EO0A1444-1-1080x675.jpg"
+                                    alt="Experiencia Minera" class="w-full h-48 object-cover"
+                                    onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+                                <div class="absolute top-3 left-3">
+                                    <span
+                                        class="bg-accent text-white px-2 py-1 rounded-full text-xs font-medium">Nuevo</span>
+                                </div>
+                                <div class="absolute top-3 right-3">
+                                    <button
+                                        class="bg-white bg-opacity-80 p-2 rounded-full hover:bg-opacity-100 transition-colors">
+                                        <i class="far fa-heart text-primary"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="p-5">
+                                <div class="flex items-center justify-between mb-2">
+                                    <h3 class="font-serif font-semibold text-primary">Experiencia Minera</h3>
+                                    <div class="flex items-center">
+                                        <i class="fas fa-star text-warning text-sm"></i>
+                                        <span class="text-sm text-text-secondary ml-1">4.8</span>
+                                    </div>
+                                </div>
+                                <p class="text-text-secondary text-sm mb-3">Descubre la tradición minera antioqueña en
+                                    minas de oro históricas</p>
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center space-x-3 text-xs text-text-secondary">
+                                        <span><i class="fas fa-clock mr-1"></i>7 horas</span>
+                                        <span><i class="fas fa-users mr-1"></i>3-10</span>
+                                        <span><i class="fas fa-map-marker-alt mr-1"></i>Segovia</span>
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <div class="text-primary font-semibold">$135.000 COP</div>
+                                    <button
+                                        class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors btn-spring text-sm"
+                                        onclick="openRouteDetail('mining-route')">
+                                        Reservar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="text-center mt-8">
+                        <button
+                            class="bg-secondary text-white px-8 py-3 rounded-lg hover:bg-secondary-600 transition-colors btn-spring">
+                            Cargar Más Rutas
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Route Detail Modal -->
+    <div id="routeDetailModal"
+        class="fixed inset-0 bg-black bg-opacity-50 hidden z-50 flex items-center justify-center p-4">
+        <div class="bg-surface rounded-xl max-w-4xl w-full max-h-96 overflow-y-auto">
+            <div class="relative">
+                <!-- Modal Header -->
+                <div class="flex justify-between items-center p-6 border-b border-subtle">
+                    <h3 class="text-2xl font-serif font-bold text-primary" id="modalTitle">Ruta del Café Tradicional
+                    </h3>
+                    <button onclick="closeRouteDetail()" class="text-text-secondary hover:text-primary">
+                        <i class="fas fa-times text-xl"></i>
+                    </button>
+                </div>
+
+                <!-- Modal Content -->
+                <div class="p-6">
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <!-- Image Gallery -->
+                        <div>
+                            <img src="https://images.pexels.com/photos/2901209/pexels-photo-2901209.jpeg?auto=compress&cs=tinysrgb&w=800"
+                                alt="Ruta del Café" class="w-full h-64 object-cover rounded-lg mb-4"
+                                onerror="this.src='https://images.unsplash.com/photo-1584824486509-112e4181ff6b?q=80&w=2940&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D'; this.onerror=null;" />
+
+                            <!-- Quick Info -->
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                <div class="flex items-center">
+                                    <i class="fas fa-clock text-primary mr-2"></i>
+                                    <span>8 horas</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-users text-primary mr-2"></i>
+                                    <span>2-12 personas</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-star text-warning mr-2"></i>
+                                    <span>4.8 (124 reseñas)</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <i class="fas fa-map-marker-alt text-primary mr-2"></i>
+                                    <span>Eje Cafetero</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Details -->
+                        <div>
+                            <h4 class="font-serif font-semibold text-lg text-primary mb-3">Descripción</h4>
+                            <p class="text-text-secondary mb-4">
+                                Sumérgete en la cultura cafetera de Antioquia visitando fincas tradicionales donde
+                                aprenderás todo el proceso del café, desde la semilla hasta la taza. Incluye degustación
+                                de café premium y almuerzo típico.
+                            </p>
+
+                            <h4 class="font-serif font-semibold text-lg text-primary mb-3">Incluye</h4>
+                            <ul class="text-text-secondary text-sm space-y-1 mb-4">
+                                <li><i class="fas fa-check text-success mr-2"></i>Transporte ida y vuelta</li>
+                                <li><i class="fas fa-check text-success mr-2"></i>Guía especializado</li>
+                                <li><i class="fas fa-check text-success mr-2"></i>Degustación de café</li>
+                                <li><i class="fas fa-check text-success mr-2"></i>Almuerzo típico</li>
+                                <li><i class="fas fa-check text-success mr-2"></i>Seguro de viaje</li>
+                            </ul>
+
+                            <div class="flex items-center justify-between mb-4">
+                                <div class="text-2xl font-bold text-primary">$180.000 COP</div>
+                                <div class="text-sm text-text-secondary">por persona</div>
+                            </div>
+
+                            <button
+                                class="w-full bg-primary text-white py-3 rounded-lg hover:bg-primary-600 transition-colors btn-spring mb-3">
+                                Reservar Ahora
+                            </button>
+                            <button
+                                class="w-full border border-primary text-primary py-3 rounded-lg hover:bg-primary-50 transition-colors">
+                                Agregar a Favoritos
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-primary-800 text-white py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="h-8 w-8 text-accent" viewBox="0 0 32 32" fill="currentColor">
+                            <path d="M16 2L3 7v10c0 8.5 5.5 16.5 13 18 7.5-1.5 13-9.5 13-18V7L16 2z" />
+                            <circle cx="16" cy="14" r="4" fill="white" />
+                            <path d="M12 20h8v2h-8z" fill="white" />
+                        </svg>
+                        <span class="ml-2 text-xl font-serif font-bold">AntioqAPP</span>
+                    </div>
+                    <p class="text-primary-200 text-sm">Descubre la auténtica cultura de Antioquia</p>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-3">Explorar</h4>
+                    <ul class="space-y-2 text-sm text-primary-200">
+                        <li><a href="tourism_routes.html" class="hover:text-white transition-colors">Rutas
+                                Turísticas</a></li>
+                        <li><a href="events_calendar.html" class="hover:text-white transition-colors">Eventos</a></li>
+                        <li><a href="business_directory.html" class="hover:text-white transition-colors">Negocios</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-3">Cuenta</h4>
+                    <ul class="space-y-2 text-sm text-primary-200">
+                        <li><a href="user_login.html" class="hover:text-white transition-colors">Iniciar Sesión</a></li>
+                        <li><a href="user_registration.html" class="hover:text-white transition-colors">Registrarse</a>
+                        </li>
+                        <li><a href="booking_management.html" class="hover:text-white transition-colors">Mis
+                                Reservas</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h4 class="font-semibold mb-3">Síguenos</h4>
+                    <div class="flex space-x-3">
+                        <a href="javascript:void(0)" class="text-primary-200 hover:text-white transition-colors">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="text-primary-200 hover:text-white transition-colors">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="javascript:void(0)" class="text-primary-200 hover:text-white transition-colors">
+                            <i class="fab fa-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-primary-700 mt-8 pt-8 text-center text-sm text-primary-200">
+                <p>&copy; 2025 AntioqAPP. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="/js/auth.js"></script>
+    <script id="dhws-dataInjector" src="../public/dhws-data-injector.js"></script>
+</body>
+
+</html>
